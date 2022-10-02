@@ -23,4 +23,5 @@ flutter:
   assets:
     - assets/lottie/
     - assets/image/
+    - assets/lottie/lupa_password.json
   uses-material-design: true

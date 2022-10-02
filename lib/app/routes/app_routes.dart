@@ -11,6 +11,10 @@ abstract class Routes {
   static const CHAT = _Paths.CHAT;
   static const LIST_CHAT = _Paths.LIST_CHAT;
   static const LUPA_PASS = _Paths.LUPA_PASS;
+  static const BUAT_PENGUMUMAN = _Paths.BUAT_PENGUMUMAN;
+  static const TAMBAH_SISWA = _Paths.TAMBAH_SISWA;
+  static const TAMBAH_GURU = _Paths.TAMBAH_GURU;
+  static const KELOLA_GURU = _Paths.KELOLA_GURU;
 }
 
 abstract class _Paths {
@@ -23,4 +27,8 @@ abstract class _Paths {
   static const CHAT = '/chat';
   static const LIST_CHAT = '/list-chat';
   static const LUPA_PASS = '/lupa-pass';
+  static const BUAT_PENGUMUMAN = '/buat-pengumuman';
+  static const TAMBAH_SISWA = '/tambah-siswa';
+  static const TAMBAH_GURU = '/tambah-guru';
+  static const KELOLA_GURU = '/kelola-guru';
 }
