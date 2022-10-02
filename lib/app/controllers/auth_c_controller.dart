@@ -1,20 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuthCController extends GetxController {
-  //TODO: Implement AuthCController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
+  TextEditingController emailC = TextEditingController();
+  TextEditingController PasswordC = TextEditingController();
+  RxBool hidepass = true.obs;
 }

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../style/textStyle.dart';
 
-class AuthButton extends StatelessWidget {
+class ButtonW extends StatelessWidget {
   final String text;
   final Function() onTap;
 
-  const AuthButton({Key? key, required this.onTap, required this.text})
+  const ButtonW({Key? key, required this.onTap, required this.text})
       : super(key: key);
 
   @override

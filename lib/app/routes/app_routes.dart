@@ -9,6 +9,8 @@ abstract class Routes {
   static const DASHBOARD = _Paths.DASHBOARD;
   static const PROFIL = _Paths.PROFIL;
   static const CHAT = _Paths.CHAT;
+  static const LIST_CHAT = _Paths.LIST_CHAT;
+  static const LUPA_PASS = _Paths.LUPA_PASS;
 }
 
 abstract class _Paths {
@@ -19,4 +21,6 @@ abstract class _Paths {
   static const DASHBOARD = '/dashboard';
   static const PROFIL = '/profil';
   static const CHAT = '/chat';
+  static const LIST_CHAT = '/list-chat';
+  static const LUPA_PASS = '/lupa-pass';
 }
