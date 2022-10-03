@@ -95,7 +95,7 @@ class LoginView extends GetView<LoginController> {
           ),
           ButtonW(
             onTap: () {
-              Get.offAllNamed(Routes.DASHBOARD);
+              authC.login(authC.emailC.text, authC.PasswordC.text);
             },
             text: "Login",
           ),

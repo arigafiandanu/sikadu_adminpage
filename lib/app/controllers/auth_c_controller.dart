@@ -71,7 +71,6 @@ class AuthCController extends GetxController {
             final currUser = await users.doc(_currentUser?.email).get();
             final currUserData = currUser.data() as Map<String, dynamic>;
             print(currUserData);
-            print("proses simpan ke model 2");
           }
         } else {
           Get.defaultDialog(
@@ -144,10 +143,6 @@ class AuthCController extends GetxController {
             "updatedTime": DateTime.now().toIso8601String(),
             'role': "admin",
             'notelp': "",
-            'lastPosition': {
-              'lat': "0",
-              'long': "0",
-            }
           });
 
           //mengirim verifikasi ke email
@@ -163,7 +158,6 @@ class AuthCController extends GetxController {
           final listChats =
               await users.doc(_currentUser!.email).collection("chats").get();
 
-          print("list chat");
           // if (listChats.docs.isNotEmpty) {
           //   List<ChatUser> dataListChats = [];
           //   listChats.docs.forEach((element) {

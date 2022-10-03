@@ -48,8 +48,8 @@ class DaftarView extends GetView<DaftarController> {
                   ),
                 ),
                 CustomFormField(
-                  headingText: "Email",
-                  hintText: "Email",
+                  headingText: "Nama",
+                  hintText: "Masukan Nama",
                   obsecureText: false,
                   suffixIcon: const SizedBox(),
                   controller: controller.namaC,
@@ -62,7 +62,7 @@ class DaftarView extends GetView<DaftarController> {
                 ),
                 CustomFormField(
                   headingText: "Email",
-                  hintText: "Email",
+                  hintText: "Masukan Email",
                   obsecureText: false,
                   suffixIcon: const SizedBox(),
                   controller: controller.emailC,
@@ -95,7 +95,7 @@ class DaftarView extends GetView<DaftarController> {
                         authC.hidepass.value = !authC.hidepass.value;
                       },
                     ),
-                    controller: authC.PasswordC,
+                    controller: controller.passC,
                   ),
                 ),
                 const SizedBox(
@@ -123,25 +123,32 @@ class DaftarView extends GetView<DaftarController> {
                         authC.hidepass.value = !authC.hidepass.value;
                       },
                     ),
-                    controller: authC.PasswordC,
+                    controller: controller.rePassC,
                   ),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 ButtonW(
-                  onTap: () {},
+                  onTap: () {
+                    authC.daftar(
+                      controller.emailC.text,
+                      controller.passC.text,
+                      controller.rePassC.text,
+                      controller.namaC.text,
+                    );
+                  },
                   text: "Daftar",
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Sudah punya akun?"),
+                    const Text("Sudah punya akun?"),
                     TextButton(
                       onPressed: () {
                         Get.back();
                       },
-                      child: Text("Login"),
+                      child: const Text("Login"),
                     )
                   ],
                 )
