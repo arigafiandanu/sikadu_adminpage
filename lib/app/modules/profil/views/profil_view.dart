@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:sikadu_admin/app/controllers/auth_c_controller.dart';
 import 'package:sikadu_admin/app/routes/app_pages.dart';
 import 'package:sikadu_admin/app/widget/buttonW.dart';
 
 import '../controllers/profil_controller.dart';
 
 class ProfilView extends GetView<ProfilController> {
+  final AuthC = Get.put(AuthCController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,45 +52,45 @@ class ProfilView extends GetView<ProfilController> {
           const SizedBox(
             height: 25,
           ),
-          Card(
-            margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-            borderOnForeground: true,
-            color: Colors.white,
-            elevation: 2,
-            child: ListTile(
-              style: ListTileStyle.list,
-              onTap: () {},
-              leading: Icon(Icons.person),
-              title: Text("Lihat Data Siswa"),
-              trailing: Icon(Icons.arrow_right),
-            ),
-          ),
-          Card(
-            margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-            borderOnForeground: true,
-            color: Colors.white,
-            elevation: 2,
-            child: ListTile(
-              style: ListTileStyle.list,
-              onTap: () {},
-              leading: Icon(Icons.person_search_rounded),
-              title: Text("Lihat Data Orang Tua"),
-              trailing: Icon(Icons.arrow_right),
-            ),
-          ),
-          Card(
-            margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-            borderOnForeground: true,
-            color: Colors.white,
-            elevation: 2,
-            child: ListTile(
-              style: ListTileStyle.list,
-              onTap: () {},
-              leading: Icon(Icons.personal_injury),
-              title: Text("Wali Kelas"),
-              trailing: Icon(Icons.arrow_right),
-            ),
-          ),
+          // Card(
+          //   margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+          //   borderOnForeground: true,
+          //   color: Colors.white,
+          //   elevation: 2,
+          //   child: ListTile(
+          //     style: ListTileStyle.list,
+          //     onTap: () {},
+          //     leading: const Icon(Icons.key_sharp),
+          //     title: const Text("Ubah Password"),
+          //     trailing: Icon(Icons.arrow_right),
+          //   ),
+          // ),
+          // Card(
+          //   margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+          //   borderOnForeground: true,
+          //   color: Colors.white,
+          //   elevation: 2,
+          //   child: ListTile(
+          //     style: ListTileStyle.list,
+          //     onTap: () {},
+          //     leading: Icon(Icons.person_search_rounded),
+          //     title: Text("Lihat Data Orang Tua"),
+          //     trailing: Icon(Icons.arrow_right),
+          //   ),
+          // ),
+          // Card(
+          //   margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+          //   borderOnForeground: true,
+          //   color: Colors.white,
+          //   elevation: 2,
+          //   child: ListTile(
+          //     style: ListTileStyle.list,
+          //     onTap: () {},
+          //     leading: Icon(Icons.personal_injury),
+          //     title: Text("Wali Kelas"),
+          //     trailing: Icon(Icons.arrow_right),
+          //   ),
+          // ),
           Card(
             margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
             borderOnForeground: true,
@@ -107,7 +109,17 @@ class ProfilView extends GetView<ProfilController> {
           ),
           ButtonW(
             onTap: () {
-              Get.offNamed(Routes.LOGIN);
+              Get.defaultDialog(
+                onConfirm: () {
+                  AuthC.logut();
+                },
+                textConfirm: "Logout",
+                onCancel: () {
+                  Get.back();
+                },
+                textCancel: "Tidak",
+                confirmTextColor: Colors.white,
+              );
             },
             text: "Logout",
           )
