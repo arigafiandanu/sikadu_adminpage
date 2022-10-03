@@ -35,7 +35,7 @@ class LoginView extends GetView<LoginController> {
             children: [
               CustomFormField(
                 headingText: "Email",
-                hintText: "Email",
+                hintText: "Masukan Email",
                 obsecureText: false,
                 suffixIcon: const SizedBox(),
                 controller: authC.emailC,
@@ -52,7 +52,7 @@ class LoginView extends GetView<LoginController> {
                   maxLines: 1,
                   textInputAction: TextInputAction.done,
                   textInputType: TextInputType.text,
-                  hintText: "At least 8 Character",
+                  hintText: "Masukan Password",
                   obsecureText: authC.hidepass.value,
                   suffixIcon: IconButton(
                     icon: authC.hidepass.value

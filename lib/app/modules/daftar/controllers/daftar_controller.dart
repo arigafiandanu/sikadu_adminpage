@@ -1,20 +1,23 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+
 class DaftarController extends GetxController {
-  //TODO: Implement DaftarController
+  TextEditingController emailC = TextEditingController();
+  TextEditingController passC = TextEditingController();
+  TextEditingController namaC = TextEditingController();
+  TextEditingController rePassC = TextEditingController();
+  TextEditingController notelp = TextEditingController();
 
-  final count = 0.obs;
+  RxBool hidePassword = true.obs;
+
   @override
-  void onInit() {
-    super.onInit();
+  void onClose() {
+    emailC.dispose();
+    passC.dispose();
+    rePassC.dispose();
+    namaC.dispose();
+    notelp.dispose();
+    super.onClose();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }

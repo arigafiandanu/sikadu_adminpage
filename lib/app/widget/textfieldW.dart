@@ -32,7 +32,7 @@ class CustomFormField extends StatelessWidget {
           margin: const EdgeInsets.only(
             left: 20,
             right: 20,
-            bottom: 10,
+            bottom: 5,
           ),
           child: Text(
             headingText,
@@ -40,13 +40,17 @@ class CustomFormField extends StatelessWidget {
           ),
         ),
         Container(
-          margin: const EdgeInsets.only(left: 20, right: 20),
+          margin: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+          ),
           decoration: BoxDecoration(
             color: AppColors.grayshade,
             borderRadius: BorderRadius.circular(15),
           ),
+          padding: const EdgeInsets.only(top: 5),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: TextField(
               maxLines: maxLines,
               controller: controller,
@@ -54,10 +58,11 @@ class CustomFormField extends StatelessWidget {
               keyboardType: textInputType,
               obscureText: obsecureText,
               decoration: InputDecoration(
-                  hintText: hintText,
-                  hintStyle: KTextStyle.textFieldHintStyle,
-                  border: InputBorder.none,
-                  suffixIcon: suffixIcon),
+                hintText: hintText,
+                hintStyle: KTextStyle.textFieldHintStyle,
+                border: InputBorder.none,
+                suffixIcon: suffixIcon,
+              ),
             ),
           ),
         )
