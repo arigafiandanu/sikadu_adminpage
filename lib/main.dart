@@ -20,22 +20,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
-        stream: authC.streamStatusAuth,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.active) {
-            return GetMaterialApp(
-              title: "Application",
-              debugShowCheckedModeBanner: false,
-              initialRoute:
-                  snapshot.data != null && snapshot.data!.emailVerified == true
-                      ? Routes.DASHBOARD
-                      : Routes.LOGIN,
-              getPages: AppPages.routes,
-            );
-          }
-          return const Center(
-            child: CircularProgressIndicator(),
+      stream: authC.streamStatusAuth,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.active) {
+          return GetMaterialApp(
+            title: "Application",
+            debugShowCheckedModeBanner: false,
+            initialRoute:
+                snapshot.data != null && snapshot.data!.emailVerified == true
+                    ? Routes.DASHBOARD
+                    : Routes.LOGIN,
+            getPages: AppPages.routes,
           );
-        });
+        }
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
   }
 }

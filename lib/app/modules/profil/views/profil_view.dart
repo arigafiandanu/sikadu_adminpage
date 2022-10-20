@@ -99,9 +99,9 @@ class ProfilView extends GetView<ProfilController> {
             child: ListTile(
               style: ListTileStyle.list,
               onTap: () {},
-              leading: Icon(Icons.key),
-              title: Text("Ganti Password"),
-              trailing: Icon(Icons.arrow_right),
+              leading: const Icon(Icons.key),
+              title: const Text("Ganti Password"),
+              trailing: const Icon(Icons.arrow_right),
             ),
           ),
           const SizedBox(

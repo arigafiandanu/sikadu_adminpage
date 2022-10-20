@@ -10,11 +10,26 @@ class AuthCController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   TextEditingController emailC = TextEditingController();
-  TextEditingController PasswordC = TextEditingController();
+  TextEditingController passwordC = TextEditingController();
   RxBool hidepass = true.obs;
+  late CollectionReference<UserData> userinfo;
   User? _currentUser;
 
   Stream<User?> get streamStatusAuth => auth.userChanges();
+
+  @override
+  void onInit() {
+    super.onInit();
+    getInfoUser();
+  }
+
+  void getInfoUser() {
+    final infoUser = firestore.collection("users").withConverter<UserData>(
+          fromFirestore: (snapshot, _) => UserData.fromJson(snapshot.data()!),
+          toFirestore: (userdata, _) => userdata.toJson(),
+        );
+    userinfo = infoUser;
+  }
 
   void lupaPass(String email) async {
     if (email != "" && GetUtils.isEmail(email)) {
@@ -109,7 +124,11 @@ class AuthCController extends GetxController {
   }
 
   Future<void> daftar(
-      String email, String password, String repassword, String nama) async {
+    String email,
+    String password,
+    String repassword,
+    String nama,
+  ) async {
     if (email.isEmpty ||
         password.isEmpty ||
         repassword.isEmpty ||
@@ -131,55 +150,23 @@ class AuthCController extends GetxController {
 
         final checkuser = await users.doc(_currentUser?.email).get();
         var _currUserMeta = _currentUser?.metadata;
+
         // simpan data user ke firestore
 
         if (checkuser.data() == null) {
-          await users.doc(_currentUser!.email).set({
-            'uid': _currentUser?.uid,
-            'nama': nama,
-            'email': email,
-            "creationTime": _currUserMeta?.creationTime!.toIso8601String(),
-            "photoUrl": "noimage",
-            "updatedTime": DateTime.now().toIso8601String(),
-            'role': "admin",
-            'notelp': "",
-          });
+          userinfo.doc(_currentUser!.email).set(UserData(
+                id: _currentUser?.uid,
+                nama: nama,
+                email: email,
+                foto: "noImage",
+                alamat: "alamat kosong",
+                noTelp: "noTelp Kosong",
+                role: "admin",
+                creationTime: _currUserMeta?.creationTime!.toIso8601String(),
+              ));
 
           //mengirim verifikasi ke email
           await _currentUser?.sendEmailVerification();
-
-          //mennyimpan data user ke model json
-          print("proses simpan di model");
-          final currUser = await users.doc(_currentUser?.email).get();
-          final currUserData = currUser.data() as Map<String, dynamic>;
-          print("proses simpan ke model 2");
-
-          //membuat doc baru diuser untuk menyimpan data chat
-          final listChats =
-              await users.doc(_currentUser!.email).collection("chats").get();
-
-          // if (listChats.docs.isNotEmpty) {
-          //   List<ChatUser> dataListChats = [];
-          //   listChats.docs.forEach((element) {
-          //     var dataDocChat = element.data();
-          //     var dataDocChatId = element.id;
-          //     dataListChats.add(ChatUser(
-          //       chatId: dataDocChatId,
-          //       connection: dataDocChat["connection"],
-          //       lastTime: dataDocChat["lastTime"],
-          //       total_unread: dataDocChat["total_unread"],
-          //     ));
-          //   });
-
-          //   user.update((user) {
-          //     user!.chats = dataListChats;
-          //   });
-          // } else {
-          //   user.update((user) {
-          //     user!.chats = [];
-          //   });
-          // }
-          // user.refresh();
 
           Get.defaultDialog(
             title: "Berhasil Daftar",

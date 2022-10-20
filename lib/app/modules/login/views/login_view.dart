@@ -68,7 +68,7 @@ class LoginView extends GetView<LoginController> {
                       authC.hidepass.value = !authC.hidepass.value;
                     },
                   ),
-                  controller: authC.PasswordC,
+                  controller: authC.passwordC,
                 ),
               ),
               Row(
@@ -95,7 +95,7 @@ class LoginView extends GetView<LoginController> {
           ),
           ButtonW(
             onTap: () {
-              authC.login(authC.emailC.text, authC.PasswordC.text);
+              authC.login(authC.emailC.text, authC.passwordC.text);
             },
             text: "Login",
           ),

@@ -1,20 +1,49 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
-  //TODO: Implement HomeController
+import '../../../model/userModel.dart';
 
-  final count = 0.obs;
+class HomeController extends GetxController {
+  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  late DocumentReference<UserData> userinfo;
+  late String currentUser;
+  var userModel = UserData().obs;
+  UserData? userdata;
   @override
   void onInit() {
     super.onInit();
+
+    getInfoUser();
+    getCurrentUser();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void getInfoUser() {
+    var infoUser = firestore
+        .collection("users")
+        .doc('auth.currentUser!.email')
+        .withConverter<UserData>(
+          fromFirestore: (snapshot, _) => UserData.fromJson(snapshot.data()!),
+          toFirestore: (userdata, _) => userdata.toJson(),
+        );
+    userinfo = infoUser;
   }
 
-  @override
-  void onClose() {}
-  void increment() => count.value++;
+  void getCurrentUser() async {
+    final data =
+        await firestore.collection("users").doc(auth.currentUser!.email).get();
+    final getdata = data.data() as Map<String, dynamic>;
+    userModel(UserData.fromJson(getdata));
+    userModel.refresh();
+  }
+
+  Stream<DocumentSnapshot<Map<String, dynamic>>> streamUser() async* {
+    String? email = auth.currentUser!.email;
+
+    yield* firestore.collection("users").doc(email).snapshots();
+  }
+  
+  
+
 }
