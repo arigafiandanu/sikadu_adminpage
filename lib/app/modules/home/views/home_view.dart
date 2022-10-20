@@ -146,7 +146,7 @@ class HomeView extends GetView<HomeController> {
                     },
                     warnaTerang: AppColors.grayshade,
                     warna: AppColors.blue,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.person_pin_circle,
                       size: 35,
                     ),
@@ -158,7 +158,7 @@ class HomeView extends GetView<HomeController> {
                     },
                     warnaTerang: AppColors.grayshade,
                     warna: AppColors.blue,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.co_present_outlined,
                       size: 35,
                     ),
