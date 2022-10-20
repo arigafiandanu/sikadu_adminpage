@@ -195,10 +195,34 @@ class HomeView extends GetView<HomeController> {
               colorCard: (Colors.amber[50])!,
               splashColor: (Colors.amber.withAlpha(50)),
               title: "Jumlah Admin",
-              jumlahSiswa: "20",
+              jumlahSiswa: "2",
               icon: const Icon(
-                Icons.co_present_outlined,
+                Icons.admin_panel_settings_rounded,
                 color: Colors.amber,
+                size: 40,
+              ),
+            ),
+            CardBesarW(
+              ontap: () {},
+              colorCard: (Colors.blue[50])!,
+              splashColor: (Colors.blue.withAlpha(50)),
+              title: "Jumlah Guru",
+              jumlahSiswa: "16",
+              icon: const Icon(
+                Icons.co_present_rounded,
+                color: Colors.blue,
+                size: 40,
+              ),
+            ),
+            CardBesarW(
+              ontap: () {},
+              colorCard: (Colors.green[50])!,
+              splashColor: (Colors.green.withAlpha(50)),
+              title: "Jumlah Siswa",
+              jumlahSiswa: "49",
+              icon: const Icon(
+                Icons.people,
+                color: Colors.green,
                 size: 40,
               ),
             )
