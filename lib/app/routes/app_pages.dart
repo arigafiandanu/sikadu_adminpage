@@ -14,6 +14,10 @@ import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/listAdmin/bindings/list_admin_binding.dart';
+import '../modules/listAdmin/views/list_admin_view.dart';
+import '../modules/listGuru/bindings/list_guru_binding.dart';
+import '../modules/listGuru/views/list_guru_view.dart';
 import '../modules/list_chat/bindings/list_chat_binding.dart';
 import '../modules/list_chat/views/list_chat_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -92,6 +96,16 @@ class AppPages {
       name: _Paths.KELOLA_GURU,
       page: () => KelolaGuruView(),
       binding: KelolaGuruBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_ADMIN,
+      page: () => ListAdminView(),
+      binding: ListAdminBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_GURU,
+      page: () => ListGuruView(),
+      binding: ListGuruBinding(),
     ),
   ];
 }

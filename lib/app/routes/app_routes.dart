@@ -15,6 +15,8 @@ abstract class Routes {
   static const TAMBAH_SISWA = _Paths.TAMBAH_SISWA;
   static const TAMBAH_GURU = _Paths.TAMBAH_GURU;
   static const KELOLA_GURU = _Paths.KELOLA_GURU;
+  static const LIST_ADMIN = _Paths.LIST_ADMIN;
+  static const LIST_GURU = _Paths.LIST_GURU;
 }
 
 abstract class _Paths {
@@ -31,4 +33,6 @@ abstract class _Paths {
   static const TAMBAH_SISWA = '/tambah-siswa';
   static const TAMBAH_GURU = '/tambah-guru';
   static const KELOLA_GURU = '/kelola-guru';
+  static const LIST_ADMIN = '/list-admin';
+  static const LIST_GURU = '/list-guru';
 }

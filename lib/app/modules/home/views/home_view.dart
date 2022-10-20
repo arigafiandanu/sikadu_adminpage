@@ -191,7 +191,9 @@ class HomeView extends GetView<HomeController> {
               ),
             ),
             CardBesarW(
-              ontap: () {},
+              ontap: () {
+                Get.toNamed(Routes.LIST_ADMIN);
+              },
               colorCard: (Colors.amber[50])!,
               splashColor: (Colors.amber.withAlpha(50)),
               title: "Jumlah Admin",
@@ -203,7 +205,9 @@ class HomeView extends GetView<HomeController> {
               ),
             ),
             CardBesarW(
-              ontap: () {},
+              ontap: () {
+                Get.toNamed(Routes.LIST_GURU);
+              },
               colorCard: (Colors.blue[50])!,
               splashColor: (Colors.blue.withAlpha(50)),
               title: "Jumlah Guru",
