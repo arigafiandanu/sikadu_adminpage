@@ -138,7 +138,7 @@ class HomeView extends GetView<HomeController> {
                       Icons.new_releases_outlined,
                       size: 35,
                     ),
-                    kategori: "Pengumuman Baru",
+                    kategori: "Buat Pengumuman Baru",
                   ),
                   cardhomepage(
                     ontap: () {
