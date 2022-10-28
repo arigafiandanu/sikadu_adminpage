@@ -166,15 +166,15 @@ class HomeView extends GetView<HomeController> {
                   ),
                   cardhomepage(
                     ontap: () {
-                      Get.toNamed(Routes.KELOLA_GURU);
+                      Get.toNamed(Routes.DAFTAR_PELAJARAN);
                     },
                     warnaTerang: AppColors.grayshade,
                     warna: AppColors.blue,
                     icon: const Icon(
-                      Icons.lock_person,
+                      Icons.book,
                       size: 35,
                     ),
-                    kategori: "Kelola Data Guru",
+                    kategori: "Kelola Pelajaran",
                   ),
                 ],
               ),

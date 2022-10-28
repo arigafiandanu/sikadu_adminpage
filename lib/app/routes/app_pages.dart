@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/BuatPengumuman/bindings/buat_pengumuman_binding.dart';
 import '../modules/BuatPengumuman/views/buat_pengumuman_view.dart';
+import '../modules/DaftarPelajaran/bindings/daftar_pelajaran_binding.dart';
+import '../modules/DaftarPelajaran/views/daftar_pelajaran_view.dart';
 import '../modules/KelolaGuru/bindings/kelola_guru_binding.dart';
 import '../modules/KelolaGuru/views/kelola_guru_view.dart';
 import '../modules/TambahGuru/bindings/tambah_guru_binding.dart';
@@ -106,6 +108,11 @@ class AppPages {
       name: _Paths.LIST_GURU,
       page: () => ListGuruView(),
       binding: ListGuruBinding(),
+    ),
+    GetPage(
+      name: _Paths.DAFTAR_PELAJARAN,
+      page: () => const DaftarPelajaranView(),
+      binding: DaftarPelajaranBinding(),
     ),
   ];
 }
