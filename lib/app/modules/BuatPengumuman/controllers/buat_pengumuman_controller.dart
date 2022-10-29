@@ -1,7 +1,12 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class BuatPengumumanController extends GetxController {
   TextEditingController judulC = TextEditingController();
@@ -9,9 +14,14 @@ class BuatPengumumanController extends GetxController {
 
   var kategoriP = "Umum".obs;
   List dataPengumuman = ["Umum", "Beasiswa", "Libur"];
+  final ImagePicker picker = ImagePicker();
+  List<XFile> imageList = [];
+  List<String> downloadUrl = [];
 
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  firebase_storage.FirebaseStorage storage =
+      firebase_storage.FirebaseStorage.instance;
 
   Future<void> tambahPengumuman() async {
     if (judulC.text.isNotEmpty && isiC.text.isNotEmpty) {
@@ -24,6 +34,11 @@ class BuatPengumumanController extends GetxController {
           .get()
           .then((value) => value.data()?['nama'])) as String?;
       try {
+        for (int i = 0; i < imageList.length; i++) {
+          var data = await uplodImage(imageList[i]);
+          downloadUrl.add(data.toString());
+        }
+
         pengumuman.set(
           {
             "id": pengumuman.id,
@@ -31,6 +46,7 @@ class BuatPengumumanController extends GetxController {
             "isi": isiC.text,
             "pembuat": namaUser,
             "kategori": kategoriP.value,
+            "fotoPengumuman": downloadUrl,
           },
         );
 
@@ -75,5 +91,33 @@ class BuatPengumumanController extends GetxController {
         ),
       );
     }
+  }
+
+  void pickMultiImage() async {
+    imageList = (await picker.pickMultiImage()).cast<XFile>();
+
+    if (imageList.isEmpty) {
+      return;
+    } else {
+      update();
+    }
+  }
+
+  Future<String> uplodImage(XFile image) async {
+    var idUser = auth.currentUser!;
+
+    String? user = (await firestore
+        .collection("users")
+        .doc(idUser.email)
+        .get()
+        .then((value) => value.data()?['nama'])) as String?;
+    final imgTime = DateTime.now().millisecondsSinceEpoch.toString();
+    final imgName = image.name;
+    File file = File(image.path);
+
+    await storage.ref("pengumuman/$user/$imgTime+$imgName").putFile(file);
+    return await storage
+        .ref("pengumuman/$user/$imgTime+$imgName")
+        .getDownloadURL();
   }
 }

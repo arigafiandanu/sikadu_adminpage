@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:sikadu_admin/app/widget/teksFieldButtonW.dart';
 
 import '../../../widget/buttonW.dart';
@@ -85,11 +88,67 @@ class BuatPengumumanView extends GetView<BuatPengumumanController> {
           const SizedBox(
             height: 20,
           ),
+          Container(
+            width: Get.width,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                GetBuilder<BuatPengumumanController>(
+                  builder: (c) {
+                    if (c.imageList.isNotEmpty) {
+                      return Container(
+                        width: Get.width,
+                        height: 600,
+                        child: GridView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 10,
+                              mainAxisSpacing: 10,
+                            ),
+                            itemCount: c.imageList.length,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                width: 100,
+                                height: 100,
+                                child: Image.file(
+                                  File(c.imageList[index].path),
+                                  fit: BoxFit.cover,
+                                ),
+                              );
+                            }),
+                      );
+                    } else {
+                      return GestureDetector(
+                        onTap: () {
+                          controller.pickMultiImage();
+                        },
+                        child: Container(
+                          width: Get.width * 0.4,
+                          height: Get.height * 0.15,
+                          alignment: Alignment.center,
+                          child: Image.asset(
+                            "assets/lottie/fotoimg2.png",
+                            alignment: Alignment.center,
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                ),
+              ],
+            ),
+          ),
           ButtonW(
             onTap: () {
               controller.tambahPengumuman();
             },
             text: "Tambah Pengumuman",
+          ),
+          const SizedBox(
+            height: 100,
           ),
         ],
       ),

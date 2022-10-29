@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:sikadu_admin/app/widget/buttonW.dart';
 import 'package:sikadu_admin/app/widget/textfieldTambahUser.dart';
 
+import '../../../widget/teksFieldButtonW.dart';
 import '../controllers/tambah_guru_controller.dart';
 
 class TambahGuruView extends GetView<TambahGuruController> {
@@ -35,6 +39,51 @@ class TambahGuruView extends GetView<TambahGuruController> {
           const SizedBox(
             height: 30,
           ),
+          Container(
+            width: Get.width,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                GetBuilder<TambahGuruController>(
+                  builder: (c) {
+                    if (c.imageP != null) {
+                      return ClipOval(
+                        child: Container(
+                          height: 100,
+                          width: 100,
+                          child: Image.file(
+                            File(c.imageP!.path),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      );
+                    } else {
+                      return GestureDetector(
+                        onTap: () {
+                          controller.pickImage();
+                        },
+                        child: Container(
+                          width: Get.width * 0.4,
+                          height: Get.height * 0.15,
+                          alignment: Alignment.center,
+                          child: Lottie.asset(
+                            "assets/lottie/avatar.json",
+                            alignment: Alignment.center,
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                ),
+                TextButton(
+                  onPressed: () {
+                    controller.pickImage();
+                  },
+                  child: const Text("Ambil Foto Guru"),
+                )
+              ],
+            ),
+          ),
           CustomFormFieldTambahUser(
             headingText: "Email",
             hintText: "Email",
@@ -64,6 +113,32 @@ class TambahGuruView extends GetView<TambahGuruController> {
             textInputAction: TextInputAction.next,
             controller: controller.nipC,
             maxLines: 1,
+          ),
+          Obx(
+            () => TextFormButtonW(
+              title: "Wali Kelas",
+              hint: controller.kategoriKelas.value,
+              controller: null,
+              widget: DropdownButton(
+                icon: Icon(
+                  Icons.keyboard_arrow_down_rounded,
+                ),
+                iconSize: 35,
+                elevation: 4,
+                underline: Container(
+                  height: 0,
+                ),
+                items: controller.dataKelas.map((e) {
+                  return DropdownMenuItem(
+                    value: e.toString(),
+                    child: Text(e.toString()),
+                  );
+                }).toList(),
+                onChanged: (String? kategori) {
+                  controller.kategoriKelas.value = kategori!;
+                },
+              ),
+            ),
           ),
           CustomFormFieldTambahUser(
             headingText: "No Telepon",

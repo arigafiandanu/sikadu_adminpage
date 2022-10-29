@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class TambahGuruController extends GetxController {
   TextEditingController namaC = TextEditingController();
@@ -14,6 +18,21 @@ class TambahGuruController extends GetxController {
 
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  firebase_storage.FirebaseStorage storage =
+      firebase_storage.FirebaseStorage.instance;
+
+  var kategoriKelas = "Kelas 1".obs;
+  List dataKelas = [
+    "Kelas 1",
+    "Kelas 2",
+    "Kelas 3",
+    "Kelas 4",
+    "Kelas 5",
+    "Kelas 6"
+  ];
+  final ImagePicker picker = ImagePicker();
+  XFile? imageP;
+  String dataImage = "imageKosong";
 
   Future<void> tambahGuru() async {
     if (emailC.text.isNotEmpty &&
@@ -26,6 +45,16 @@ class TambahGuruController extends GetxController {
         );
 
         if (userCredential.user != null) {
+          if (imageP != null) {
+            File file = File(imageP!.path);
+            String ext = imageP!.name.split(".").last;
+
+            await storage.ref('profil/${emailC.text}/foto.$ext').putFile(file);
+            String urlImage = await storage
+                .ref('profil/${emailC.text}/foto.$ext')
+                .getDownloadURL();
+            dataImage = urlImage;
+          }
           String? uid = userCredential.user?.uid;
 
           firestore.collection("users").doc(emailC.text).set({
@@ -35,7 +64,7 @@ class TambahGuruController extends GetxController {
             "uid": uid,
             "noTelp": noTelpC.text,
             "tanggalGabung": DateTime.now().toIso8601String(),
-            "image": "noImage",
+            "image": dataImage,
             "role": "Guru",
           });
 
@@ -92,6 +121,15 @@ class TambahGuruController extends GetxController {
           color: Colors.red,
         ),
       );
+    }
+  }
+
+  void pickImage() async {
+    imageP = await picker.pickImage(source: ImageSource.gallery);
+    if (imageP.toString().isEmpty) {
+      return;
+    } else {
+      update();
     }
   }
 }
