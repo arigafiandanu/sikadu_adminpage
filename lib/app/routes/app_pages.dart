@@ -4,6 +4,8 @@ import '../modules/BuatPengumuman/bindings/buat_pengumuman_binding.dart';
 import '../modules/BuatPengumuman/views/buat_pengumuman_view.dart';
 import '../modules/DaftarPelajaran/bindings/daftar_pelajaran_binding.dart';
 import '../modules/DaftarPelajaran/views/daftar_pelajaran_view.dart';
+import '../modules/DetailPengumuman/bindings/detail_pengumuman_binding.dart';
+import '../modules/DetailPengumuman/views/detail_pengumuman_view.dart';
 import '../modules/KelolaGuru/bindings/kelola_guru_binding.dart';
 import '../modules/KelolaGuru/views/kelola_guru_view.dart';
 import '../modules/TambahGuru/bindings/tambah_guru_binding.dart';
@@ -24,6 +26,10 @@ import '../modules/listGuru/bindings/list_guru_binding.dart';
 import '../modules/listGuru/views/list_guru_view.dart';
 import '../modules/listPengumuman/bindings/list_pengumuman_binding.dart';
 import '../modules/listPengumuman/views/list_pengumuman_view.dart';
+import '../modules/listSiswa/bindings/list_siswa_binding.dart';
+import '../modules/listSiswa/views/list_siswa_view.dart';
+import '../modules/listSiswaPerKelas/bindings/list_siswa_per_kelas_binding.dart';
+import '../modules/listSiswaPerKelas/views/list_siswa_per_kelas_view.dart';
 import '../modules/list_chat/bindings/list_chat_binding.dart';
 import '../modules/list_chat/views/list_chat_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -127,6 +133,21 @@ class AppPages {
       name: _Paths.DETAIL_USER,
       page: () => const DetailUserView(),
       binding: DetailUserBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_SISWA,
+      page: () => const ListSiswaView(),
+      binding: ListSiswaBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_SISWA_PER_KELAS,
+      page: () => const ListSiswaPerKelasView(),
+      binding: ListSiswaPerKelasBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_PENGUMUMAN,
+      page: () => const DetailPengumumanView(),
+      binding: DetailPengumumanBinding(),
     ),
   ];
 }

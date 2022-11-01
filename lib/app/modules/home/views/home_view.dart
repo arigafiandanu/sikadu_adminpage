@@ -310,7 +310,9 @@ class HomeView extends GetView<HomeController> {
                   var jmldata = snapshot1.data!.docs.length;
                   var data = int.tryParse(jmldata.toString()).toString();
                   return CardBesarW(
-                    ontap: () {},
+                    ontap: () {
+                      Get.toNamed(Routes.LIST_SISWA);
+                    },
                     colorCard: (Colors.green[50])!,
                     splashColor: (Colors.green.withAlpha(50)),
                     title: "Jumlah Siswa",

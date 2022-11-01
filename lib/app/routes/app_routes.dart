@@ -20,6 +20,9 @@ abstract class Routes {
   static const DAFTAR_PELAJARAN = _Paths.DAFTAR_PELAJARAN;
   static const LIST_PENGUMUMAN = _Paths.LIST_PENGUMUMAN;
   static const DETAIL_USER = _Paths.DETAIL_USER;
+  static const LIST_SISWA = _Paths.LIST_SISWA;
+  static const LIST_SISWA_PER_KELAS = _Paths.LIST_SISWA_PER_KELAS;
+  static const DETAIL_PENGUMUMAN = _Paths.DETAIL_PENGUMUMAN;
 }
 
 abstract class _Paths {
@@ -41,4 +44,7 @@ abstract class _Paths {
   static const DAFTAR_PELAJARAN = '/daftar-pelajaran';
   static const LIST_PENGUMUMAN = '/list-pengumuman';
   static const DETAIL_USER = '/detail-user';
+  static const LIST_SISWA = '/list-siswa';
+  static const LIST_SISWA_PER_KELAS = '/list-siswa-per-kelas';
+  static const DETAIL_PENGUMUMAN = '/detail-pengumuman';
 }

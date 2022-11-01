@@ -9,7 +9,23 @@ class ListAdminView extends GetView<ListAdminController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ListAdminView'),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+        ),
+        title: const Text(
+          'List Admin',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
         centerTitle: true,
       ),
       body: Center(
