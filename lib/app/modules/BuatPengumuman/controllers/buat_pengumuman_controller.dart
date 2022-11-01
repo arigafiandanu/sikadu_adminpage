@@ -47,6 +47,7 @@ class BuatPengumumanController extends GetxController {
             "pembuat": namaUser,
             "kategori": kategoriP.value,
             "fotoPengumuman": downloadUrl,
+            "tanggalBuat": DateTime.now().toIso8601String(),
           },
         );
 

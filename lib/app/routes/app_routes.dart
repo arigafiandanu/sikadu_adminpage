@@ -18,6 +18,8 @@ abstract class Routes {
   static const LIST_ADMIN = _Paths.LIST_ADMIN;
   static const LIST_GURU = _Paths.LIST_GURU;
   static const DAFTAR_PELAJARAN = _Paths.DAFTAR_PELAJARAN;
+  static const LIST_PENGUMUMAN = _Paths.LIST_PENGUMUMAN;
+  static const DETAIL_USER = _Paths.DETAIL_USER;
 }
 
 abstract class _Paths {
@@ -37,4 +39,6 @@ abstract class _Paths {
   static const LIST_ADMIN = '/list-admin';
   static const LIST_GURU = '/list-guru';
   static const DAFTAR_PELAJARAN = '/daftar-pelajaran';
+  static const LIST_PENGUMUMAN = '/list-pengumuman';
+  static const DETAIL_USER = '/detail-user';
 }

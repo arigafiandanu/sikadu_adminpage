@@ -12,7 +12,6 @@ import '../../../widget/cardButtonW.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  UserData? _userData;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +56,7 @@ class HomeView extends GetView<HomeController> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Hallo, ${dataUser?['nama']}",
+                                    "Hallo, admin ${dataUser?['nama']}",
                                     style: const TextStyle(
                                       color: Colors.black87,
                                       fontWeight: FontWeight.w800,
@@ -185,51 +184,150 @@ class HomeView extends GetView<HomeController> {
                 width: Get.width,
                 height: Get.height * 0.02,
                 child: const Text(
+                  "Pengumuman",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                ),
+              ),
+            ),
+            StreamBuilder<QuerySnapshot<Object?>>(
+                stream: controller.streamJmlPengumuman(),
+                builder: (context, snapshotPengumuman) {
+                  if (snapshotPengumuman.connectionState ==
+                      ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  if (snapshotPengumuman.hasData) {
+                    var jmlPengumuman = snapshotPengumuman.data!.docs.length;
+                    return CardBesarW(
+                      ontap: () {
+                        Get.toNamed(Routes.LIST_PENGUMUMAN);
+                      },
+                      colorCard: (Colors.indigo[50])!,
+                      splashColor: (Colors.indigoAccent.withAlpha(50)),
+                      title: "Kelola Pengumuman",
+                      jumlahSiswa: "Info $jmlPengumuman",
+                      icon: const Icon(
+                        Icons.add_alert_rounded,
+                        color: Colors.indigoAccent,
+                        size: 40,
+                      ),
+                    );
+                  } else {
+                    return const Center(
+                      child: Text("data pengumuan error"),
+                    );
+                  }
+                }),
+            const SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+              child: SizedBox(
+                width: Get.width,
+                height: Get.height * 0.02,
+                child: const Text(
                   "Kelola Pengguna",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                 ),
               ),
             ),
-            CardBesarW(
-              ontap: () {
-                Get.toNamed(Routes.LIST_ADMIN);
+            StreamBuilder<QuerySnapshot<Object?>>(
+              stream: controller.streamjmlAdmin(),
+              builder: (context, snapshot1) {
+                if (snapshot1.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                if (snapshot1.hasData) {
+                  var jmldata = snapshot1.data!.docs.length;
+                  var data = int.tryParse(jmldata.toString()).toString();
+                  return CardBesarW(
+                    ontap: () {
+                      Get.toNamed(Routes.LIST_ADMIN);
+                    },
+                    colorCard: (Colors.amber[50])!,
+                    splashColor: (Colors.amber.withAlpha(50)),
+                    title: "Jumlah Admin",
+                    jumlahSiswa: data,
+                    icon: const Icon(
+                      Icons.admin_panel_settings_rounded,
+                      color: Colors.amber,
+                      size: 40,
+                    ),
+                  );
+                } else {
+                  return const Center(
+                    child: Text("Data error"),
+                  );
+                }
               },
-              colorCard: (Colors.amber[50])!,
-              splashColor: (Colors.amber.withAlpha(50)),
-              title: "Jumlah Admin",
-              jumlahSiswa: "2",
-              icon: const Icon(
-                Icons.admin_panel_settings_rounded,
-                color: Colors.amber,
-                size: 40,
-              ),
             ),
-            CardBesarW(
-              ontap: () {
-                Get.toNamed(Routes.LIST_GURU);
+            StreamBuilder<QuerySnapshot<Object?>>(
+              stream: controller.streamjmlGuru(),
+              builder: (context, snapshot1) {
+                if (snapshot1.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                if (snapshot1.hasData) {
+                  var jmldata = snapshot1.data!.docs.length;
+                  var data = int.tryParse(jmldata.toString()).toString();
+                  return CardBesarW(
+                    ontap: () {
+                      Get.toNamed(Routes.LIST_GURU);
+                    },
+                    colorCard: (Colors.blue[50])!,
+                    splashColor: (Colors.blue.withAlpha(50)),
+                    title: "Jumlah Guru",
+                    jumlahSiswa: data,
+                    icon: const Icon(
+                      Icons.co_present_rounded,
+                      color: Colors.blue,
+                      size: 40,
+                    ),
+                  );
+                } else {
+                  return const Center(
+                    child: Text("Data error"),
+                  );
+                }
               },
-              colorCard: (Colors.blue[50])!,
-              splashColor: (Colors.blue.withAlpha(50)),
-              title: "Jumlah Guru",
-              jumlahSiswa: "16",
-              icon: const Icon(
-                Icons.co_present_rounded,
-                color: Colors.blue,
-                size: 40,
-              ),
             ),
-            CardBesarW(
-              ontap: () {},
-              colorCard: (Colors.green[50])!,
-              splashColor: (Colors.green.withAlpha(50)),
-              title: "Jumlah Siswa",
-              jumlahSiswa: "49",
-              icon: const Icon(
-                Icons.people,
-                color: Colors.green,
-                size: 40,
-              ),
-            )
+            StreamBuilder<QuerySnapshot<Object?>>(
+              stream: controller.streamjmlSiswa(),
+              builder: (context, snapshot1) {
+                if (snapshot1.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                if (snapshot1.hasData) {
+                  var jmldata = snapshot1.data!.docs.length;
+                  var data = int.tryParse(jmldata.toString()).toString();
+                  return CardBesarW(
+                    ontap: () {},
+                    colorCard: (Colors.green[50])!,
+                    splashColor: (Colors.green.withAlpha(50)),
+                    title: "Jumlah Siswa",
+                    jumlahSiswa: data,
+                    icon: const Icon(
+                      Icons.people,
+                      color: Colors.green,
+                      size: 40,
+                    ),
+                  );
+                } else {
+                  return const Center(
+                    child: Text("Data error"),
+                  );
+                }
+              },
+            ),
           ],
         ),
       ),

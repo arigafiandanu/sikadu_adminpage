@@ -43,7 +43,27 @@ class HomeController extends GetxController {
 
     yield* firestore.collection("users").doc(email).snapshots();
   }
-  
-  
 
+  Stream<QuerySnapshot<Object?>> streamjmlAdmin() {
+    Query<Map<String, dynamic>> admin =
+        firestore.collection("users").where('role', isEqualTo: 'admin');
+    return admin.snapshots();
+  }
+
+  Stream<QuerySnapshot<Object?>> streamjmlGuru() {
+    Query<Map<String, dynamic>> admin =
+        firestore.collection("users").where('role', isEqualTo: 'Guru');
+    return admin.snapshots();
+  }
+
+  Stream<QuerySnapshot<Object?>> streamjmlSiswa() {
+    Query<Map<String, dynamic>> admin =
+        firestore.collection("users").where('role', isEqualTo: 'orangTua');
+    return admin.snapshots();
+  }
+
+  Stream<QuerySnapshot<Object?>> streamJmlPengumuman() {
+    Query<Map<String, dynamic>> admin = firestore.collection("pengumuman");
+    return admin.snapshots();
+  }
 }

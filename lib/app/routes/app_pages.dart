@@ -14,12 +14,16 @@ import '../modules/daftar/bindings/daftar_binding.dart';
 import '../modules/daftar/views/daftar_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
+import '../modules/detailUser/bindings/detail_user_binding.dart';
+import '../modules/detailUser/views/detail_user_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/listAdmin/bindings/list_admin_binding.dart';
 import '../modules/listAdmin/views/list_admin_view.dart';
 import '../modules/listGuru/bindings/list_guru_binding.dart';
 import '../modules/listGuru/views/list_guru_view.dart';
+import '../modules/listPengumuman/bindings/list_pengumuman_binding.dart';
+import '../modules/listPengumuman/views/list_pengumuman_view.dart';
 import '../modules/list_chat/bindings/list_chat_binding.dart';
 import '../modules/list_chat/views/list_chat_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -113,6 +117,16 @@ class AppPages {
       name: _Paths.DAFTAR_PELAJARAN,
       page: () => const DaftarPelajaranView(),
       binding: DaftarPelajaranBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_PENGUMUMAN,
+      page: () => const ListPengumumanView(),
+      binding: ListPengumumanBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_USER,
+      page: () => const DetailUserView(),
+      binding: DetailUserBinding(),
     ),
   ];
 }
