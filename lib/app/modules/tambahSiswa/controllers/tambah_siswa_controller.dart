@@ -69,11 +69,12 @@ class TambahSiswaController extends GetxController {
             "uid": uid,
             "noTelp": noTelpC.text,
             "tanggalGabung": DateTime.now().toIso8601String(),
-            "image": dataImage,
+            "foto": dataImage,
             "role": "orangTua",
-            "namaOrtu": namaOrtuC.text
+            "namaOrtu": namaOrtuC.text,
+            "kelas": kategoriKelas.value,
           });
-
+          Get.back();
           Get.snackbar(
             "Berhasil",
             "Data Siswa Berhasil ditambah",

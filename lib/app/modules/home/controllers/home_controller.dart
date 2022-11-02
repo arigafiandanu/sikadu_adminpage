@@ -63,7 +63,7 @@ class HomeController extends GetxController {
   }
 
   Stream<QuerySnapshot<Object?>> streamJmlPengumuman() {
-    Query<Map<String, dynamic>> admin = firestore.collection("pengumuman");
-    return admin.snapshots();
+    Query<Map<String, dynamic>> pengumuman = firestore.collection("pengumuman");
+    return pengumuman.snapshots();
   }
 }

@@ -64,10 +64,11 @@ class TambahGuruController extends GetxController {
             "uid": uid,
             "noTelp": noTelpC.text,
             "tanggalGabung": DateTime.now().toIso8601String(),
-            "image": dataImage,
+            "foto": dataImage,
             "role": "Guru",
           });
 
+          Get.back();
           Get.snackbar(
             "Berhasil",
             "Data Guru Berhasil ditambah",

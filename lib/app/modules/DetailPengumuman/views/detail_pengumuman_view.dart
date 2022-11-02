@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -8,16 +9,107 @@ class DetailPengumumanView extends GetView<DetailPengumumanController> {
   const DetailPengumumanView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    var dataPengumuman = Get.arguments;
+    List<Container> tempImage =
+        (dataPengumuman['fotoPengumuman'] as List).map((item) {
+      return Container(
+        child: Image.network(
+          item,
+          fit: BoxFit.cover,
+        ),
+      );
+    }).toList();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DetailPengumumanView'),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+        ),
+        title: const Text(
+          'Detail Pengumuman',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
         centerTitle: true,
       ),
-      body: Center(
-        child: Text(
-          'DetailPengumumanView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      body: ListView(
+        children: [
+          CarouselSlider(
+            items: tempImage,
+            options: CarouselOptions(
+              height: Get.height / 3.5,
+              autoPlay: true,
+              autoPlayInterval: const Duration(seconds: 5),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            alignment: Alignment.centerRight,
+            child: Text(
+              dataPengumuman['kategori'],
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              dataPengumuman['judul'],
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+          ),
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  dataPengumuman['tanggalBuat'],
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  dataPengumuman['pembuat'],
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              dataPengumuman['isi'],
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

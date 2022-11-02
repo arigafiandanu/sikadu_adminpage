@@ -59,7 +59,7 @@ class ListSiswaView extends GetView<ListSiswaController> {
               onTap: () {
                 Get.toNamed(
                   Routes.LIST_SISWA_PER_KELAS,
-                  arguments: {"id": "kelas 1"},
+                  arguments: {"id": "kelas 2"},
                 );
               },
               title: const Text("Siswa Kelas 2"),
@@ -77,7 +77,7 @@ class ListSiswaView extends GetView<ListSiswaController> {
               onTap: () {
                 Get.toNamed(
                   Routes.LIST_SISWA_PER_KELAS,
-                  arguments: {"id": "kelas 1"},
+                  arguments: {"id": "kelas 3"},
                 );
               },
               title: const Text("Siswa Kelas 3"),
@@ -92,7 +92,12 @@ class ListSiswaView extends GetView<ListSiswaController> {
             color: Colors.white,
             elevation: 2,
             child: ListTile(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(
+                  Routes.LIST_SISWA_PER_KELAS,
+                  arguments: {"id": "kelas 4"},
+                );
+              },
               title: const Text("Siswa Kelas 4"),
               trailing: const Icon(Icons.arrow_right),
               style: ListTileStyle.list,
@@ -105,7 +110,12 @@ class ListSiswaView extends GetView<ListSiswaController> {
             color: Colors.white,
             elevation: 2,
             child: ListTile(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(
+                  Routes.LIST_SISWA_PER_KELAS,
+                  arguments: {"id": "kelas 5"},
+                );
+              },
               title: const Text("Siswa Kelas 5"),
               trailing: const Icon(Icons.arrow_right),
               style: ListTileStyle.list,
@@ -118,7 +128,12 @@ class ListSiswaView extends GetView<ListSiswaController> {
             color: Colors.white,
             elevation: 2,
             child: ListTile(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(
+                  Routes.LIST_SISWA_PER_KELAS,
+                  arguments: {"id": "kelas 6"},
+                );
+              },
               title: const Text("Siswa Kelas 6"),
               trailing: const Icon(Icons.arrow_right),
               style: ListTileStyle.list,

@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 import '../controllers/list_guru_controller.dart';
 
@@ -28,11 +30,51 @@ class ListGuruView extends GetView<ListGuruController> {
         ),
         centerTitle: true,
       ),
-      body: Center(
-        child: Text(
-          'ListGuruView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      body: StreamBuilder<QuerySnapshot<Object?>>(
+        stream: controller.streamGuru(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (snapshot.hasData) {
+            var listItem = snapshot.data!.docs;
+            return ListView.builder(
+              itemCount: listItem.length,
+              itemBuilder: (context, index) {
+                var dataItem = listItem[index].data() as Map<String, dynamic>;
+                return Card(
+                  margin: const EdgeInsets.all(5),
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 5,
+                    ),
+                    onTap: () {},
+                    leading: CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.transparent,
+                      child: ClipRect(
+                        child: Lottie.asset(
+                          "assets/lottie/avatar.json",
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    title: Text(dataItem['nama']),
+                    subtitle: Text(dataItem['nip']),
+                    trailing: const Icon(Icons.arrow_right),
+                  ),
+                );
+              },
+            );
+          } else {
+            return const Center(
+              child: Text("data erro"),
+            );
+          }
+        },
       ),
     );
   }

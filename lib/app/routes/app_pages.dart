@@ -16,6 +16,8 @@ import '../modules/daftar/bindings/daftar_binding.dart';
 import '../modules/daftar/views/daftar_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
+import '../modules/detailGuru/bindings/detail_guru_binding.dart';
+import '../modules/detailGuru/views/detail_guru_view.dart';
 import '../modules/detailUser/bindings/detail_user_binding.dart';
 import '../modules/detailUser/views/detail_user_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -148,6 +150,11 @@ class AppPages {
       name: _Paths.DETAIL_PENGUMUMAN,
       page: () => const DetailPengumumanView(),
       binding: DetailPengumumanBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_GURU,
+      page: () => const DetailGuruView(),
+      binding: DetailGuruBinding(),
     ),
   ];
 }

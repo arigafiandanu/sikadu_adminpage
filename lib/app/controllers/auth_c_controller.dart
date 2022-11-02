@@ -158,7 +158,7 @@ class AuthCController extends GetxController {
                 id: _currentUser?.uid,
                 nama: nama,
                 email: email,
-                foto: "noImage",
+                foto: "imageKosong",
                 alamat: "alamat kosong",
                 noTelp: "noTelp Kosong",
                 role: "admin",

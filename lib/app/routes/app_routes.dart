@@ -23,6 +23,7 @@ abstract class Routes {
   static const LIST_SISWA = _Paths.LIST_SISWA;
   static const LIST_SISWA_PER_KELAS = _Paths.LIST_SISWA_PER_KELAS;
   static const DETAIL_PENGUMUMAN = _Paths.DETAIL_PENGUMUMAN;
+  static const DETAIL_GURU = _Paths.DETAIL_GURU;
 }
 
 abstract class _Paths {
@@ -47,4 +48,5 @@ abstract class _Paths {
   static const LIST_SISWA = '/list-siswa';
   static const LIST_SISWA_PER_KELAS = '/list-siswa-per-kelas';
   static const DETAIL_PENGUMUMAN = '/detail-pengumuman';
+  static const DETAIL_GURU = '/detail-guru';
 }
