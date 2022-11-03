@@ -20,6 +20,8 @@ import '../modules/detailGuru/bindings/detail_guru_binding.dart';
 import '../modules/detailGuru/views/detail_guru_view.dart';
 import '../modules/detailUser/bindings/detail_user_binding.dart';
 import '../modules/detailUser/views/detail_user_view.dart';
+import '../modules/gantiPassword/bindings/ganti_password_binding.dart';
+import '../modules/gantiPassword/views/ganti_password_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/listAdmin/bindings/list_admin_binding.dart';
@@ -42,6 +44,8 @@ import '../modules/profil/bindings/profil_binding.dart';
 import '../modules/profil/views/profil_view.dart';
 import '../modules/tambahSiswa/bindings/tambah_siswa_binding.dart';
 import '../modules/tambahSiswa/views/tambah_siswa_view.dart';
+import '../modules/updateProfil/bindings/update_profil_binding.dart';
+import '../modules/updateProfil/views/update_profil_view.dart';
 
 part 'app_routes.dart';
 
@@ -155,6 +159,16 @@ class AppPages {
       name: _Paths.DETAIL_GURU,
       page: () => const DetailGuruView(),
       binding: DetailGuruBinding(),
+    ),
+    GetPage(
+      name: _Paths.UPDATE_PROFIL,
+      page: () => const UpdateProfilView(),
+      binding: UpdateProfilBinding(),
+    ),
+    GetPage(
+      name: _Paths.GANTI_PASSWORD,
+      page: () => const GantiPasswordView(),
+      binding: GantiPasswordBinding(),
     ),
   ];
 }
