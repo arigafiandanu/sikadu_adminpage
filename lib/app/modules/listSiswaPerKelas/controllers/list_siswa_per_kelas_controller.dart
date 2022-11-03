@@ -1,23 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class ListSiswaPerKelasController extends GetxController {
-  //TODO: Implement ListSiswaPerKelasController
+  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  Stream<QuerySnapshot<Object?>> streamSiswa(String kelas) {
+    Query<Map<String, dynamic>> siswa = firestore
+        .collection("users")
+        .where('role', isEqualTo: 'orangTua')
+        .where("kelas", isEqualTo: kelas);
+    return siswa.snapshots();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

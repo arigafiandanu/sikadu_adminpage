@@ -41,7 +41,7 @@ class ListSiswaView extends GetView<ListSiswaController> {
               onTap: () {
                 Get.toNamed(
                   Routes.LIST_SISWA_PER_KELAS,
-                  arguments: {"id": "kelas 1"},
+                  arguments: {"id": "Kelas 1"},
                 );
               },
               title: const Text("Siswa Kelas 1"),
@@ -59,7 +59,7 @@ class ListSiswaView extends GetView<ListSiswaController> {
               onTap: () {
                 Get.toNamed(
                   Routes.LIST_SISWA_PER_KELAS,
-                  arguments: {"id": "kelas 2"},
+                  arguments: {"id": "Kelas 2"},
                 );
               },
               title: const Text("Siswa Kelas 2"),
@@ -77,7 +77,7 @@ class ListSiswaView extends GetView<ListSiswaController> {
               onTap: () {
                 Get.toNamed(
                   Routes.LIST_SISWA_PER_KELAS,
-                  arguments: {"id": "kelas 3"},
+                  arguments: {"id": "Kelas 3"},
                 );
               },
               title: const Text("Siswa Kelas 3"),
@@ -95,7 +95,7 @@ class ListSiswaView extends GetView<ListSiswaController> {
               onTap: () {
                 Get.toNamed(
                   Routes.LIST_SISWA_PER_KELAS,
-                  arguments: {"id": "kelas 4"},
+                  arguments: {"id": "Kelas 4"},
                 );
               },
               title: const Text("Siswa Kelas 4"),
@@ -113,7 +113,7 @@ class ListSiswaView extends GetView<ListSiswaController> {
               onTap: () {
                 Get.toNamed(
                   Routes.LIST_SISWA_PER_KELAS,
-                  arguments: {"id": "kelas 5"},
+                  arguments: {"id": "Kelas 5"},
                 );
               },
               title: const Text("Siswa Kelas 5"),
@@ -131,7 +131,7 @@ class ListSiswaView extends GetView<ListSiswaController> {
               onTap: () {
                 Get.toNamed(
                   Routes.LIST_SISWA_PER_KELAS,
-                  arguments: {"id": "kelas 6"},
+                  arguments: {"id": "Kelas 6"},
                 );
               },
               title: const Text("Siswa Kelas 6"),
