@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -53,31 +54,99 @@ class ListChatView extends GetView<ListChatController> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return Card(
-                  margin: const EdgeInsets.all(5),
-                  child: ListTile(
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 5,
-                    ),
-                    onTap: () {
-                      Get.toNamed(Routes.CHAT);
-                    },
-                    leading: CircleAvatar(
-                      radius: 30,
-                      backgroundColor: Colors.transparent,
-                      child: ClipRect(
+            child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+              stream: controller.chatdata(),
+              builder: (context, snapshot) {
+                print(snapshot);
+                if (snapshot.connectionState == ConnectionState.active) {
+                  var listChat = snapshot.data!.docs;
+
+                  if (listChat.isEmpty) {
+                    return Center(
+                      child: Container(
+                        height: Get.height * 0.7,
+                        width: Get.width * 0.7,
                         child: Lottie.asset(
-                          "assets/lottie/avatar.json",
-                          fit: BoxFit.cover,
+                          "assets/lottie/empty.json",
                         ),
                       ),
-                    ),
-                    title: Text("Nama ke $index"),
-                  ),
+                    );
+                  } else {
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      itemCount: listChat.length,
+                      itemBuilder: (context, index) {
+                        return StreamBuilder<
+                                DocumentSnapshot<Map<String, dynamic>>>(
+                            stream: controller
+                                .friendStream(listChat[index]['connection']),
+                            builder: (context, snapshot2) {
+                              if (snapshot2.connectionState ==
+                                  ConnectionState.active) {
+                                var data = snapshot2.data!.data();
+
+                                return Card(
+                                  margin: const EdgeInsets.all(5),
+                                  child: ListTile(
+                                    contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                      vertical: 5,
+                                    ),
+                                    onTap: () => controller.goToChatRoom(
+                                      listChat[index].id,
+                                      data?['email'],
+                                      listChat[index]["connection"],
+                                    ),
+                                    leading: CircleAvatar(
+                                      radius: 30,
+
+                                      // backgroundColor: Colors.white,
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        child: data?["photoUrl"] == "noimage"
+                                            ? Image.network(
+                                                "https://ui-avatars.com/api/?name=${data?['nama']}",
+                                                fit: BoxFit.cover,
+                                              )
+                                            : Image.network(
+                                                "${data?["photoUrl"]}",
+                                                fit: BoxFit.cover,
+                                              ),
+                                      ),
+                                    ),
+                                    title: Text(
+                                      "${data?["nama"]}",
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    trailing: listChat[index]["total_unread"] ==
+                                            0
+                                        ? SizedBox()
+                                        : Chip(
+                                            backgroundColor: Colors.green[900],
+                                            label: Text(
+                                              "${listChat[index]["total_unread"]}",
+                                              style: const TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                  ),
+                                );
+                              }
+
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            });
+                      },
+                    );
+                  }
+                }
+                return const Center(
+                  child: CircularProgressIndicator(),
                 );
               },
             ),
