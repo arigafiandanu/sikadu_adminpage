@@ -26,6 +26,7 @@ abstract class Routes {
   static const DETAIL_GURU = _Paths.DETAIL_GURU;
   static const UPDATE_PROFIL = _Paths.UPDATE_PROFIL;
   static const GANTI_PASSWORD = _Paths.GANTI_PASSWORD;
+  static const DETAIL_SISWA = _Paths.DETAIL_SISWA;
 }
 
 abstract class _Paths {
@@ -53,4 +54,5 @@ abstract class _Paths {
   static const DETAIL_GURU = '/detail-guru';
   static const UPDATE_PROFIL = '/update-profil';
   static const GANTI_PASSWORD = '/ganti-password';
+  static const DETAIL_SISWA = '/detail-siswa';
 }

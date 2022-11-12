@@ -20,6 +20,8 @@ import '../modules/detailGuru/bindings/detail_guru_binding.dart';
 import '../modules/detailGuru/views/detail_guru_view.dart';
 import '../modules/detailUser/bindings/detail_user_binding.dart';
 import '../modules/detailUser/views/detail_user_view.dart';
+import '../modules/detail_siswa/bindings/detail_siswa_binding.dart';
+import '../modules/detail_siswa/views/detail_siswa_view.dart';
 import '../modules/gantiPassword/bindings/ganti_password_binding.dart';
 import '../modules/gantiPassword/views/ganti_password_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -159,6 +161,13 @@ class AppPages {
       name: _Paths.DETAIL_GURU,
       page: () => const DetailGuruView(),
       binding: DetailGuruBinding(),
+      children: [
+        GetPage(
+          name: _Paths.DETAIL_GURU,
+          page: () => const DetailGuruView(),
+          binding: DetailGuruBinding(),
+        ),
+      ],
     ),
     GetPage(
       name: _Paths.UPDATE_PROFIL,
@@ -169,6 +178,11 @@ class AppPages {
       name: _Paths.GANTI_PASSWORD,
       page: () => const GantiPasswordView(),
       binding: GantiPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_SISWA,
+      page: () => const DetailSiswaView(),
+      binding: DetailSiswaBinding(),
     ),
   ];
 }

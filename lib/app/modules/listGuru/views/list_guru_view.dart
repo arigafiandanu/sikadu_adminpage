@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:sikadu_admin/app/routes/app_pages.dart';
 
 import '../controllers/list_guru_controller.dart';
 
@@ -51,15 +52,22 @@ class ListGuruView extends GetView<ListGuruController> {
                       horizontal: 20,
                       vertical: 5,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Get.toNamed(Routes.DETAIL_GURU, arguments: dataItem);
+                    },
                     leading: CircleAvatar(
-                      radius: 30,
+                      radius: 25,
                       backgroundColor: Colors.transparent,
                       child: ClipRect(
-                        child: Lottie.asset(
-                          "assets/lottie/avatar.json",
-                          fit: BoxFit.cover,
-                        ),
+                        child: dataItem['foto'] != 'imageKosong'
+                            ? Image.network(
+                                dataItem['foto'],
+                                fit: BoxFit.cover,
+                              )
+                            : Lottie.asset(
+                                "assets/lottie/avatar.json",
+                                fit: BoxFit.cover,
+                              ),
                       ),
                     ),
                     title: Text(dataItem['nama']),

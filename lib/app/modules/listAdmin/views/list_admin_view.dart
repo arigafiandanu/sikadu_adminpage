@@ -56,10 +56,15 @@ class ListAdminView extends GetView<ListAdminController> {
                       radius: 30,
                       backgroundColor: Colors.transparent,
                       child: ClipRect(
-                        child: Lottie.asset(
-                          "assets/lottie/avatar.json",
-                          fit: BoxFit.cover,
-                        ),
+                        child: dataItem['foto'] != 'imageKosong'
+                            ? Image.network(
+                                dataItem['foto'],
+                                fit: BoxFit.cover,
+                              )
+                            : Lottie.asset(
+                                "assets/lottie/avatar.json",
+                                fit: BoxFit.cover,
+                              ),
                       ),
                     ),
                     title: Text(dataItem['nama']),

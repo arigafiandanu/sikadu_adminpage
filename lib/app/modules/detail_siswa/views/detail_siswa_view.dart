@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
-import '../controllers/detail_guru_controller.dart';
+import '../controllers/detail_siswa_controller.dart';
 
-class DetailGuruView extends GetView<DetailGuruController> {
-  const DetailGuruView({Key? key}) : super(key: key);
+class DetailSiswaView extends GetView<DetailSiswaController> {
+  const DetailSiswaView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var dataGuru = Get.arguments;
+    var dataSiswa = Get.arguments;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -36,9 +36,9 @@ class DetailGuruView extends GetView<DetailGuruController> {
           CircleAvatar(
             radius: 75,
             backgroundColor: Colors.transparent,
-            child: dataGuru['foto'] != "imageKosong"
+            child: dataSiswa['foto'] != "imageKosong"
                 ? Image.network(
-                    dataGuru['foto'],
+                    dataSiswa['foto'],
                     fit: BoxFit.fitWidth,
                   )
                 : Lottie.asset(
@@ -49,7 +49,7 @@ class DetailGuruView extends GetView<DetailGuruController> {
           Container(
             alignment: Alignment.center,
             child: Text(
-              dataGuru['nama'],
+              dataSiswa['nama'],
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w800,
@@ -60,7 +60,7 @@ class DetailGuruView extends GetView<DetailGuruController> {
             padding: const EdgeInsets.only(top: 5),
             alignment: Alignment.center,
             child: Text(
-              dataGuru['nip'],
+              dataSiswa['nip'],
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
@@ -83,7 +83,7 @@ class DetailGuruView extends GetView<DetailGuruController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
                   Text(
-                    "Status Guru",
+                    "Status Siswa",
                     style: TextStyle(
                       fontSize: 14,
                     ),
@@ -106,7 +106,7 @@ class DetailGuruView extends GetView<DetailGuruController> {
               padding: const EdgeInsets.all(10),
               alignment: Alignment.centerLeft,
               child: const Text(
-                "DATA GURU",
+                "DATA SISWAS",
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
@@ -129,7 +129,7 @@ class DetailGuruView extends GetView<DetailGuruController> {
                     children: [
                       const Text("Nama"),
                       Text(
-                        "${dataGuru['nama']}",
+                        "${dataSiswa['nama']}",
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
@@ -146,7 +146,7 @@ class DetailGuruView extends GetView<DetailGuruController> {
                     children: [
                       const Text("Email"),
                       Text(
-                        "${dataGuru['email']}",
+                        "${dataSiswa['email']}",
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
@@ -163,10 +163,55 @@ class DetailGuruView extends GetView<DetailGuruController> {
                     children: [
                       const Text("No Telpon"),
                       Text(
-                        "${dataGuru['noTelp']}",
+                        "${dataSiswa['noTelp']}",
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              alignment: Alignment.centerLeft,
+              child: const Text(
+                "DATA ORANG TUA",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.grey[100],
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Nama"),
+                      Text(
+                        "${dataSiswa['namaOrtu']}",
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Divider(
+                      color: Colors.grey.shade200,
+                      height: 1,
+                    ),
                   ),
                 ],
               ),

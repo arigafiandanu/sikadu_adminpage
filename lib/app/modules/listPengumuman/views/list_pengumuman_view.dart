@@ -68,29 +68,35 @@ class ListPengumumanView extends GetView<ListPengumumanController> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(color: Colors.grey.shade100),
+                          color: Colors.blue[50],
                         ),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              padding: const EdgeInsets.only(left: 10, top: 5),
-                              alignment: Alignment.centerLeft,
+                              margin: const EdgeInsets.only(left: 10, top: 10),
+                              alignment: Alignment.center,
+                              width: Get.width / 8,
+                              decoration: BoxDecoration(
+                                color: Colors.blue[100],
+                                borderRadius: BorderRadius.circular(5),
+                              ),
                               child: Text(
                                 isiData['kategori'],
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w300,
                                 ),
                               ),
                             ),
                             Container(
-                              padding: const EdgeInsets.only(left: 10, top: 5),
+                              margin: const EdgeInsets.only(left: 10),
                               alignment: Alignment.centerLeft,
                               width: Get.width * 0.8,
                               height: Get.height * 0.075,
                               child: Text(
-                                isiData['judul'],
+                                "${isiData['judul']}".toUpperCase(),
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w800,

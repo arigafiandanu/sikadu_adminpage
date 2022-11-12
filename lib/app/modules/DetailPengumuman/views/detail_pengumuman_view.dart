@@ -50,22 +50,33 @@ class DetailPengumumanView extends GetView<DetailPengumumanController> {
               autoPlayInterval: const Duration(seconds: 5),
             ),
           ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            alignment: Alignment.centerRight,
-            child: Text(
-              dataPengumuman['kategori'],
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
+                alignment: Alignment.center,
+                width: Get.width * 0.2,
+                decoration: BoxDecoration(
+                  color: Colors.blue[100],
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(
+                  dataPengumuman['kategori'],
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
           Container(
             padding: const EdgeInsets.all(10),
             alignment: Alignment.centerLeft,
             child: Text(
-              dataPengumuman['judul'],
+              "${dataPengumuman['judul']}".toUpperCase(),
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w800,
@@ -98,14 +109,22 @@ class DetailPengumumanView extends GetView<DetailPengumumanController> {
               ),
             ],
           ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            alignment: Alignment.centerLeft,
-            child: Text(
-              dataPengumuman['isi'],
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
+              alignment: Alignment.centerLeft,
+              width: Get.width,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.blue[50],
+              ),
+              child: Text(
+                dataPengumuman['isi'],
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ),
