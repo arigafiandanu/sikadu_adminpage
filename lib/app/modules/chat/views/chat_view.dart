@@ -44,19 +44,18 @@ class ChatView extends GetView<ChatController> {
                       var dataFriend =
                           snapFriendUser.data!.data() as Map<String, dynamic>;
 
-                      if (dataFriend["photoUrl"] == "noimage") {
+                      if (dataFriend["foto"] == "foto kosong") {
                         return ClipRRect(
                           borderRadius: BorderRadius.circular(50),
-                          child: Image.network(
-                            "https://ui-avatars.com/api/?name=${dataFriend['nama']}",
-                            fit: BoxFit.cover,
+                          child: Lottie.asset(
+                            "assets/lottie/avatar.json",
                           ),
                         );
                       } else {
                         return ClipRRect(
                           borderRadius: BorderRadius.circular(50),
                           child: Image.network(
-                            dataFriend["photoUrl"],
+                            dataFriend["foto"],
                             fit: BoxFit.cover,
                           ),
                         );
@@ -64,9 +63,8 @@ class ChatView extends GetView<ChatController> {
                     }
                     return ClipRRect(
                       borderRadius: BorderRadius.circular(50),
-                      child: Image.asset(
-                        "assets/logo/noimage.png",
-                        fit: BoxFit.cover,
+                      child: Lottie.asset(
+                        "assets/lottie/avatar.json",
                       ),
                     );
                   },
@@ -225,7 +223,7 @@ class ChatView extends GetView<ChatController> {
                 ),
                 Material(
                   borderRadius: BorderRadius.circular(100),
-                  color: Colors.lightGreen,
+                  color: Colors.blue.shade500,
                   child: InkWell(
                     borderRadius: BorderRadius.circular(100),
                     onTap: () {

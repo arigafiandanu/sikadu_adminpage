@@ -104,13 +104,12 @@ class ListChatView extends GetView<ListChatController> {
                                       child: ClipRRect(
                                         borderRadius:
                                             BorderRadius.circular(100),
-                                        child: data?["photoUrl"] == "noimage"
-                                            ? Image.network(
-                                                "https://ui-avatars.com/api/?name=${data?['nama']}",
-                                                fit: BoxFit.cover,
+                                        child: data?["foto"] == "foto kosong"
+                                            ? Lottie.asset(
+                                                "assets/lottie/avatar.json",
                                               )
                                             : Image.network(
-                                                "${data?["photoUrl"]}",
+                                                "${data?["foto"]}",
                                                 fit: BoxFit.cover,
                                               ),
                                       ),
