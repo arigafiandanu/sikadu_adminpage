@@ -66,7 +66,7 @@ class ListSiswaPerKelasView extends GetView<ListSiswaPerKelasController> {
                         radius: 30,
                         backgroundColor: Colors.transparent,
                         child: ClipRect(
-                          child: dataItem['foto'] != 'imageKosong'
+                          child: dataItem['foto'] != 'foto kosong'
                               ? Image.network(
                                   dataItem['foto'],
                                   fit: BoxFit.cover,
@@ -78,7 +78,7 @@ class ListSiswaPerKelasView extends GetView<ListSiswaPerKelasController> {
                         ),
                       ),
                       title: Text(dataItem['nama']),
-                      subtitle: Text(dataItem['nip']),
+                      // subtitle: Text(dataItem['nip']),
                       trailing: const Icon(Icons.arrow_right),
                     ),
                   );

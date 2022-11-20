@@ -56,7 +56,7 @@ class ListAdminView extends GetView<ListAdminController> {
                       radius: 30,
                       backgroundColor: Colors.transparent,
                       child: ClipRect(
-                        child: dataItem['foto'] != 'imageKosong'
+                        child: dataItem['foto'] != 'foto kosong'
                             ? Image.network(
                                 dataItem['foto'],
                                 fit: BoxFit.cover,

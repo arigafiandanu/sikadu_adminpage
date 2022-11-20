@@ -34,7 +34,7 @@ class TambahSiswaController extends GetxController {
 
   final ImagePicker picker = ImagePicker();
   XFile? imageP;
-  String dataImage = "imageKosong";
+  String dataImage = "foto kosong";
 
   Future<void> tambahDataSiswa() async {
     if (emailC.text.isNotEmpty &&
@@ -64,7 +64,21 @@ class TambahSiswaController extends GetxController {
 
           await firestore.collection("users").doc(emailC.text).set({
             "email": emailC.text,
-            "nip": nisC.text,
+            "nama": namaC.text,
+            "namaOrtu": namaOrtuC.text,
+            "uid": uid,
+            "foto": dataImage,
+            "role": "orangTua",
+          });
+
+          await firestore
+              .collection("users")
+              .doc(emailC.text)
+              .collection("Data Siswa")
+              .doc(emailC.text)
+              .set({
+            "email": emailC.text,
+            "nis": nisC.text,
             "nama": namaC.text,
             "uid": uid,
             "noTelp": noTelpC.text,
@@ -74,6 +88,7 @@ class TambahSiswaController extends GetxController {
             "namaOrtu": namaOrtuC.text,
             "kelas": kategoriKelas.value,
           });
+
           Get.back();
           Get.snackbar(
             "Berhasil",

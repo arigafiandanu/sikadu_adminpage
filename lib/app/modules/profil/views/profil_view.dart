@@ -38,7 +38,7 @@ class ProfilView extends GetView<ProfilController> {
                       height: 180,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(200),
-                        child: user!['foto'] != "imageKosong"
+                        child: user!['foto'] != "foto kosong"
                             ? Image.network(
                                 user['foto'],
                                 fit: BoxFit.cover,
@@ -56,13 +56,13 @@ class ProfilView extends GetView<ProfilController> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
-                      "${user['noTelp'].toUpperCase()}",
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w300,
-                      ),
-                    )
+                    // Text(
+                    //   "${user['noTelp'].toUpperCase()}",
+                    //   style: const TextStyle(
+                    //     fontSize: 18,
+                    //     fontWeight: FontWeight.w300,
+                    //   ),
+                    // )
                   ],
                 ),
                 const SizedBox(

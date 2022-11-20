@@ -81,7 +81,7 @@ class HomeView extends GetView<HomeController> {
                                     color: AppColors.biruTerang,
                                     borderRadius: BorderRadius.circular(25),
                                   ),
-                                  child: dataUser?['foto'] != "imageKosong"
+                                  child: dataUser?['foto'] != "foto kosong"
                                       ? Image.network(
                                           dataUser?['foto'],
                                           fit: BoxFit.cover,

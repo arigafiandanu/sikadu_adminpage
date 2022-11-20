@@ -7,7 +7,7 @@ class ProfilController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   Stream<DocumentSnapshot<Map<String, dynamic>>> streamUser() async* {
-    String? email = await auth.currentUser!.email;
+    String? email =  auth.currentUser!.email;
 
     yield* firestore.collection("users").doc(email).snapshots();
   }

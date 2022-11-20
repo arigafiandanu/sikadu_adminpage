@@ -32,7 +32,7 @@ class TambahGuruController extends GetxController {
   ];
   final ImagePicker picker = ImagePicker();
   XFile? imageP;
-  String dataImage = "imageKosong";
+  String dataImage = "foto kosong";
 
   Future<void> tambahGuru() async {
     if (emailC.text.isNotEmpty &&
@@ -57,7 +57,19 @@ class TambahGuruController extends GetxController {
           }
           String? uid = userCredential.user?.uid;
 
-          firestore.collection("users").doc(emailC.text).set({
+          await firestore.collection("users").doc(emailC.text).set({
+            "email": emailC.text,
+            "nama": namaC.text,
+            "uid": uid,
+            "foto": dataImage,
+            "role": "Guru",
+          });
+         await firestore
+              .collection("users")
+              .doc(emailC.text)
+              .collection("Data Guru")
+              .doc(emailC.text)
+              .set({
             "email": emailC.text,
             "nip": nipC.text,
             "nama": namaC.text,

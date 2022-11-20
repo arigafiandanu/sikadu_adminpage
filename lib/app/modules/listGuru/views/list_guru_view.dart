@@ -59,7 +59,7 @@ class ListGuruView extends GetView<ListGuruController> {
                       radius: 25,
                       backgroundColor: Colors.transparent,
                       child: ClipRect(
-                        child: dataItem['foto'] != 'imageKosong'
+                        child: dataItem['foto'] != 'foto kosong'
                             ? Image.network(
                                 dataItem['foto'],
                                 fit: BoxFit.cover,
@@ -71,7 +71,6 @@ class ListGuruView extends GetView<ListGuruController> {
                       ),
                     ),
                     title: Text(dataItem['nama']),
-                    subtitle: Text(dataItem['nip']),
                     trailing: const Icon(Icons.arrow_right),
                   ),
                 );
