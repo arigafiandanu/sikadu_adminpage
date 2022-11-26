@@ -57,6 +57,7 @@ class TambahGuruController extends GetxController {
           }
           String? uid = userCredential.user?.uid;
 
+          //memyimpan data umum di collection users
           await firestore.collection("users").doc(emailC.text).set({
             "email": emailC.text,
             "nama": namaC.text,
@@ -64,12 +65,27 @@ class TambahGuruController extends GetxController {
             "foto": dataImage,
             "role": "Guru",
           });
-         await firestore
-              .collection("users")
-              .doc(emailC.text)
-              .collection("Data Guru")
-              .doc(emailC.text)
-              .set({
+
+          //membuat collection data guru didalam users
+          // await firestore
+          //     .collection("users")
+          //     .doc(emailC.text)
+          //     .collection("Data Guru")
+          //     .doc(emailC.text)
+          //     .set({
+          //   "email": emailC.text,
+          //   "nip": nipC.text,
+          //   "nama": namaC.text,
+          //   "uid": uid,
+          //   "noTelp": noTelpC.text,
+          //   "tanggalGabung": DateTime.now().toIso8601String(),
+          //   "foto": dataImage,
+          //   "role": "Guru",
+          //   "mengajarKelas": kategoriKelas.value,
+          // });
+
+          //membuat collection baru dengan nama Guru
+          await firestore.collection("Guru").doc(emailC.text).set({
             "email": emailC.text,
             "nip": nipC.text,
             "nama": namaC.text,
@@ -78,6 +94,7 @@ class TambahGuruController extends GetxController {
             "tanggalGabung": DateTime.now().toIso8601String(),
             "foto": dataImage,
             "role": "Guru",
+            "mengajarKelas": kategoriKelas.value,
           });
 
           Get.back();

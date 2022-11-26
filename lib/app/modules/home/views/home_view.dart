@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:sikadu_admin/app/model/userModel.dart';
 import 'package:sikadu_admin/app/routes/app_pages.dart';
 import 'package:sikadu_admin/app/widget/cardBesarW.dart';
 
@@ -23,7 +22,7 @@ class HomeView extends GetView<HomeController> {
             SafeArea(
               top: true,
               left: true,
-              right: true,
+              right: true, 
               child: Container(),
             ),
             StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(

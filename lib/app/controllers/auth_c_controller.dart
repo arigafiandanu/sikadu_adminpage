@@ -162,7 +162,18 @@ class AuthCController extends GetxController {
             "role": "admin"
           });
 
-          await users.doc(email).collection("Data Admin").doc(email).set({
+          //bikin collection baru di users dengan nama data admin
+          // await users.doc(email).collection("Data Admin").doc(email).set({
+          //   "id": _currentUser?.uid,
+          //   "nama": nama,
+          //   "email": email,
+          //   "alamat": "alamat kosong",
+          //   "noTelp": "noTelp kosong",
+          //   "creationTime": _currUserMeta?.creationTime!.toIso8601String(),
+          // });
+
+          //bikin collection baru dengan nama data admin
+          await firestore.collection("Admin").doc(email).set({
             "id": _currentUser?.uid,
             "nama": nama,
             "email": email,
@@ -214,7 +225,6 @@ class AuthCController extends GetxController {
     await FirebaseAuth.instance.signOut();
     Get.offAllNamed(Routes.LOGIN);
   }
-
 
   //new chat
 
@@ -304,7 +314,7 @@ class AuthCController extends GetxController {
           // .update((user) {
           //   useuserr!.chats = dataListChats;
           // });
-        } 
+        }
         // else {
         //   user.update((user) {
         //     user!.chats = [];
@@ -353,7 +363,7 @@ class AuthCController extends GetxController {
           // user.update((user) {
           //   user!.chats = dataListChats;
           // });
-        } 
+        }
         // else {
         //   user.update((user) {
         //     user!.chats = [];

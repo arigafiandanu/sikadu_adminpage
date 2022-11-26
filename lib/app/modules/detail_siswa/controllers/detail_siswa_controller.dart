@@ -7,11 +7,8 @@ class DetailSiswaController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   Stream<DocumentSnapshot<Map<String, dynamic>>> streamSiswa(String email) {
-    DocumentReference<Map<String, dynamic>> siswa = firestore
-        .collection("users")
-        .doc(email)
-        .collection("Data Siswa")
-        .doc(email);
+    DocumentReference<Map<String, dynamic>> siswa =
+        firestore.collection("Siswa").doc(email);
 
     return siswa.snapshots();
   }

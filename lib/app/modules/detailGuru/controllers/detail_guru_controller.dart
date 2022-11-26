@@ -7,12 +7,9 @@ class DetailGuruController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   Stream<DocumentSnapshot<Map<String, dynamic>>> streamGuru(String email) {
-    DocumentReference<Map<String, dynamic>> siswa = firestore
-        .collection("users")
-        .doc(email)
-        .collection("Data Guru")
-        .doc(email);
+    DocumentReference<Map<String, dynamic>> guru =
+        firestore.collection("Guru").doc(email);
 
-    return siswa.snapshots();
+    return guru.snapshots();
   }
 }

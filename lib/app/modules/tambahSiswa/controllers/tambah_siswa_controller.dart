@@ -71,12 +71,27 @@ class TambahSiswaController extends GetxController {
             "role": "orangTua",
           });
 
-          await firestore
-              .collection("users")
-              .doc(emailC.text)
-              .collection("Data Siswa")
-              .doc(emailC.text)
-              .set({
+          //menyimpan data collection didalam collection user dengan nama data siswa
+          // await firestore
+          //     .collection("users")
+          //     .doc(emailC.text)
+          //     .collection("Data Siswa")
+          //     .doc(emailC.text)
+          //     .set({
+          //   "email": emailC.text,
+          //   "nis": nisC.text,
+          //   "nama": namaC.text,
+          //   "uid": uid,
+          //   "noTelp": noTelpC.text,
+          //   "tanggalGabung": DateTime.now().toIso8601String(),
+          //   "foto": dataImage,
+          //   "role": "orangTua",
+          //   "namaOrtu": namaOrtuC.text,
+          //   "kelas": kategoriKelas.value,
+          // });
+
+          //menyimpan data kedalam collection siswa
+          await firestore.collection("Data Siswa").doc(emailC.text).set({
             "email": emailC.text,
             "nis": nisC.text,
             "nama": namaC.text,
