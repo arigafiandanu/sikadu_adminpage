@@ -91,7 +91,7 @@ class TambahSiswaController extends GetxController {
           // });
 
           //menyimpan data kedalam collection siswa
-          await firestore.collection("Data Siswa").doc(emailC.text).set({
+          await firestore.collection("Siswa").doc(emailC.text).set({
             "email": emailC.text,
             "nis": nisC.text,
             "nama": namaC.text,
