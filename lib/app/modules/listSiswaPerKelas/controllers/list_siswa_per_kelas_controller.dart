@@ -7,10 +7,8 @@ class ListSiswaPerKelasController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   Stream<QuerySnapshot<Object?>> streamSiswa(String kelas) {
-    Query<Map<String, dynamic>> siswa = firestore
-        .collection("users")
-        .where('role', isEqualTo: 'orangTua')
-        .where("kelas", isEqualTo: kelas);
+    Query<Map<String, dynamic>> siswa =
+        firestore.collection("Siswa").where("kelas", isEqualTo: kelas);
     return siswa.snapshots();
   }
 }

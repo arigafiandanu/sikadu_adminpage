@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:sikadu_admin/app/routes/app_pages.dart';
 
 import '../controllers/daftar_pelajaran_controller.dart';
 
@@ -37,7 +38,10 @@ class DaftarPelajaranView extends GetView<DaftarPelajaranController> {
             color: Colors.white,
             elevation: 2,
             child: ListTile(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(Routes.MATA_PELAJARAN_PERKELAS,
+                    arguments: {"kelas": "kelas 1"});
+              },
               title: const Text("Pelajaran Kelas 1"),
               trailing: const Icon(Icons.arrow_right),
               style: ListTileStyle.list,
@@ -50,7 +54,10 @@ class DaftarPelajaranView extends GetView<DaftarPelajaranController> {
             color: Colors.white,
             elevation: 2,
             child: ListTile(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(Routes.MATA_PELAJARAN_PERKELAS,
+                    arguments: {"kelas": "kelas 2"});
+              },
               title: const Text("Pelajaran Kelas 2"),
               trailing: const Icon(Icons.arrow_right),
               style: ListTileStyle.list,
@@ -63,7 +70,10 @@ class DaftarPelajaranView extends GetView<DaftarPelajaranController> {
             color: Colors.white,
             elevation: 2,
             child: ListTile(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(Routes.MATA_PELAJARAN_PERKELAS,
+                    arguments: {"kelas": "kelas 3"});
+              },
               title: const Text("Pelajaran Kelas 3"),
               trailing: const Icon(Icons.arrow_right),
               style: ListTileStyle.list,
@@ -76,7 +86,10 @@ class DaftarPelajaranView extends GetView<DaftarPelajaranController> {
             color: Colors.white,
             elevation: 2,
             child: ListTile(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(Routes.MATA_PELAJARAN_PERKELAS,
+                    arguments: {"kelas": "kelas 4"});
+              },
               title: const Text("Pelajaran Kelas 4"),
               trailing: const Icon(Icons.arrow_right),
               style: ListTileStyle.list,
@@ -89,7 +102,10 @@ class DaftarPelajaranView extends GetView<DaftarPelajaranController> {
             color: Colors.white,
             elevation: 2,
             child: ListTile(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(Routes.MATA_PELAJARAN_PERKELAS,
+                    arguments: {"kelas": "kelas 5"});
+              },
               title: const Text("Pelajaran Kelas 5"),
               trailing: const Icon(Icons.arrow_right),
               style: ListTileStyle.list,
@@ -102,7 +118,10 @@ class DaftarPelajaranView extends GetView<DaftarPelajaranController> {
             color: Colors.white,
             elevation: 2,
             child: ListTile(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(Routes.MATA_PELAJARAN_PERKELAS,
+                    arguments: {"kelas": "kelas 6"});
+              },
               title: const Text("Pelajaran Kelas 6"),
               trailing: const Icon(Icons.arrow_right),
               style: ListTileStyle.list,

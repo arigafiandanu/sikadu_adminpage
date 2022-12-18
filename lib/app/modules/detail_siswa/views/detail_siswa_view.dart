@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:sikadu_admin/app/controllers/auth_c_controller.dart';
 import 'package:sikadu_admin/app/widget/buttonW.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controllers/detail_siswa_controller.dart';
 
 class DetailSiswaView extends GetView<DetailSiswaController> {
@@ -13,7 +14,6 @@ class DetailSiswaView extends GetView<DetailSiswaController> {
   Widget build(BuildContext context) {
     final authC = Get.find<AuthCController>();
     var dataSiswaEmail = Get.arguments['email'];
-    print(dataSiswaEmail);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -33,7 +33,6 @@ class DetailSiswaView extends GetView<DetailSiswaController> {
             color: Colors.black,
           ),
         ),
-        centerTitle: true,
       ),
       body: StreamBuilder(
         stream: controller.streamSiswa(dataSiswaEmail),
@@ -185,6 +184,24 @@ class DetailSiswaView extends GetView<DetailSiswaController> {
                             ),
                           ],
                         ),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Divider(
+                            color: Colors.grey.shade200,
+                            height: 1,
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text("Kelas"),
+                            Text(
+                              "${dataSiswa?['kelas']}",
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
@@ -236,10 +253,20 @@ class DetailSiswaView extends GetView<DetailSiswaController> {
                   ),
                 ),
                 ButtonW(
-                    onTap: () {
-                      authC.addNewChat(dataSiswa?['email']);
-                    },
-                    text: "Chat Siswa")
+                  onTap: () {
+                    authC.addNewChat(dataSiswa?['email']);
+                  },
+                  text: "Chat Siswa",
+                ),
+                const SizedBox(
+                  height: 15.0,
+                ),
+                ButtonW(
+                  onTap: () {
+                    Get.toNamed(Routes.UPDATE_DATA_SISWA, arguments: dataSiswa);
+                  },
+                  text: "Edit Siswa",
+                )
               ],
             );
           } else {

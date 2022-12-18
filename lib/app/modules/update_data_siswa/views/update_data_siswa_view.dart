@@ -8,11 +8,22 @@ import 'package:lottie/lottie.dart';
 import '../../../widget/buttonW.dart';
 import '../../../widget/teksFieldButtonW.dart';
 import '../../../widget/textfieldTambahUser.dart';
-import '../controllers/tambah_siswa_controller.dart';
+import '../controllers/update_data_siswa_controller.dart';
 
-class TambahSiswaView extends GetView<TambahSiswaController> {
+class UpdateDataSiswaView extends GetView<UpdateDataSiswaController> {
+  var dataSiswa = Get.arguments;
+  UpdateDataSiswaView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    controller.namaC.text = dataSiswa?['nama'];
+    controller.nisC.text = dataSiswa?['nis'];
+    controller.noTelpC.text = dataSiswa?['noTelp'];
+    // controller.alamatC.text = dataSiswa?['']
+    controller.emailC.text = dataSiswa?['email'];
+    controller.namaOrtuC.text = dataSiswa?['namaOrtu'];
+    controller.kelasC.value.text = dataSiswa?['kelas'];
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -26,13 +37,12 @@ class TambahSiswaView extends GetView<TambahSiswaController> {
             color: Colors.black,
           ),
         ),
-        title: const Text(
-          'Tambah Data Siswa',
-          style: TextStyle(
+        title: Text(
+          'Update Data ${dataSiswa?['nama']}',
+          style: const TextStyle(
             color: Colors.black,
           ),
         ),
-        centerTitle: true,
       ),
       body: ListView(
         children: [
@@ -44,50 +54,70 @@ class TambahSiswaView extends GetView<TambahSiswaController> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                GetBuilder<TambahSiswaController>(
+                GetBuilder<UpdateDataSiswaController>(
                   builder: (c) {
-                    if (c.imageP != null) {
+                    if (c.image != null) {
                       return ClipOval(
-                        child: Container(
-                          height: 100,
-                          width: 100,
+                        child: SizedBox(
+                          height: 180,
+                          width: 180,
                           child: Image.file(
-                            File(c.imageP!.path),
+                            File(c.image!.path),
                             fit: BoxFit.cover,
                           ),
                         ),
                       );
                     } else {
-                      return GestureDetector(
-                        onTap: () {
-                          controller.pickImage();
-                        },
-                        child: Container(
-                          width: Get.width * 0.4,
-                          height: Get.height * 0.15,
-                          alignment: Alignment.center,
-                          child: Lottie.asset(
-                            "assets/lottie/avatar.json",
-                            alignment: Alignment.center,
+                      if (dataSiswa?['foto'] == "foto kosong") {
+                        return ClipOval(
+                          child: SizedBox(
+                            height: 180,
+                            width: 180,
+                            child: Lottie.asset(
+                              "assets/lottie/avatar.json",
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                      );
+                        );
+                      } else {
+                        return ClipOval(
+                          child: SizedBox(
+                            height: 180,
+                            width: 180,
+                            child: Image.network(
+                              dataSiswa?['foto'],
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      }
                     }
                   },
                 ),
-                TextButton(
-                  onPressed: () {
-                    controller.pickImage();
-                  },
-                  child: const Text("Ambil Foto MUrid"),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        controller.pickImage();
+                      },
+                      child: const Text("Ambil Foto"),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        controller.hapusImage(dataSiswa?['email']);
+                      },
+                      child: const Text("Hapus"),
+                    )
+                  ],
                 )
               ],
             ),
           ),
           CustomFormFieldTambahUser(
             headingText: "Email",
+            readOnly: true,
             hintText: "Email",
-            readOnly: false,
             obsecureText: false,
             suffixIcon: const SizedBox(),
             textInputType: TextInputType.emailAddress,
@@ -98,8 +128,8 @@ class TambahSiswaView extends GetView<TambahSiswaController> {
           CustomFormFieldTambahUser(
             headingText: "Nama",
             hintText: "Nama",
-            obsecureText: false,
             readOnly: false,
+            obsecureText: false,
             suffixIcon: const SizedBox(),
             textInputType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
@@ -109,8 +139,8 @@ class TambahSiswaView extends GetView<TambahSiswaController> {
           CustomFormFieldTambahUser(
             headingText: "Nis",
             hintText: "Nis",
-            obsecureText: false,
             readOnly: false,
+            obsecureText: false,
             suffixIcon: const SizedBox(),
             textInputType: TextInputType.number,
             textInputAction: TextInputAction.next,
@@ -120,10 +150,10 @@ class TambahSiswaView extends GetView<TambahSiswaController> {
           Obx(
             () => TextFormButtonW(
               title: "Masuk Kelas",
-              hint: controller.kategoriKelas.value,
-              controller: null,
+              hint: controller.kelasC.value.text,
+              controller: controller.kelasC.value,
               widget: DropdownButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.keyboard_arrow_down_rounded,
                 ),
                 iconSize: 35,
@@ -138,7 +168,7 @@ class TambahSiswaView extends GetView<TambahSiswaController> {
                   );
                 }).toList(),
                 onChanged: (String? kategori) {
-                  controller.kategoriKelas.value = kategori!;
+                  controller.kelasC.value.text = kategori!;
                 },
               ),
             ),
@@ -168,11 +198,16 @@ class TambahSiswaView extends GetView<TambahSiswaController> {
           const SizedBox(
             height: 20,
           ),
-          ButtonW(
-            onTap: () {
-              controller.tambahDataSiswa();
-            },
-            text: "Tambah Data Siswa",
+          Obx(
+            () => ButtonW(
+                onTap: () async {
+                  if (controller.isLoading.isFalse) {
+                    await controller.updateSiswa(dataSiswa!['email']);
+                  }
+                },
+                text: controller.isLoading.isFalse
+                    ? "Update data siswa"
+                    : "loading"),
           ),
         ],
       ),

@@ -77,7 +77,7 @@ class ProfilView extends GetView<ProfilController> {
                   child: ListTile(
                     style: ListTileStyle.list,
                     onTap: () {
-                      Get.toNamed(Routes.UPDATE_PROFIL);
+                      Get.toNamed(Routes.UPDATE_PROFIL, arguments: user);
                     },
                     leading: const Icon(Icons.person),
                     title: const Text("Update profil"),

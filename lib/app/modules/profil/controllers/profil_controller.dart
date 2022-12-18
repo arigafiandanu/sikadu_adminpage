@@ -9,6 +9,6 @@ class ProfilController extends GetxController {
   Stream<DocumentSnapshot<Map<String, dynamic>>> streamUser() async* {
     String? email =  auth.currentUser!.email;
 
-    yield* firestore.collection("users").doc(email).snapshots();
+    yield* firestore.collection("Admin").doc(email).snapshots();
   }
 }

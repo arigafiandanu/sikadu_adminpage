@@ -27,6 +27,9 @@ abstract class Routes {
   static const UPDATE_PROFIL = _Paths.UPDATE_PROFIL;
   static const GANTI_PASSWORD = _Paths.GANTI_PASSWORD;
   static const DETAIL_SISWA = _Paths.DETAIL_SISWA;
+  static const UPDATE_DATA_SISWA = _Paths.UPDATE_DATA_SISWA;
+  static const UPDATE_DATA_GURU = _Paths.UPDATE_DATA_GURU;
+  static const MATA_PELAJARAN_PERKELAS = _Paths.MATA_PELAJARAN_PERKELAS;
 }
 
 abstract class _Paths {
@@ -55,4 +58,7 @@ abstract class _Paths {
   static const UPDATE_PROFIL = '/update-profil';
   static const GANTI_PASSWORD = '/ganti-password';
   static const DETAIL_SISWA = '/detail-siswa';
+  static const UPDATE_DATA_SISWA = '/update-data-siswa';
+  static const UPDATE_DATA_GURU = '/update-data-guru';
+  static const MATA_PELAJARAN_PERKELAS = '/mata-pelajaran-perkelas';
 }

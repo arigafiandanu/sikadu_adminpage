@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:sikadu_admin/app/controllers/auth_c_controller.dart';
 import 'package:sikadu_admin/app/widget/buttonW.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controllers/detail_guru_controller.dart';
 
 class DetailGuruView extends GetView<DetailGuruController> {
@@ -44,6 +45,7 @@ class DetailGuruView extends GetView<DetailGuruController> {
               }
               if (snapshot.hasData) {
                 var dataGuru = snapshot.data?.data();
+                print(dataGuru);
                 return ListView(
                   children: [
                     CircleAvatar(
@@ -184,15 +186,47 @@ class DetailGuruView extends GetView<DetailGuruController> {
                                 ),
                               ],
                             ),
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Divider(
+                                color: Colors.grey.shade200,
+                                height: 1,
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("Mengajar Kelas"),
+                                Text(
+                                  "${dataGuru?['mengajarKelas']}",
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      height: 15,
+                    ),
                     ButtonW(
-                        onTap: () {
-                          authC.addNewChat(dataGuru?['email']);
-                        },
-                        text: "Chat Guru")
+                      onTap: () {
+                        authC.addNewChat(dataGuru?['email']);
+                      },
+                      text: "Chat Guru",
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    ButtonW(
+                      onTap: () {
+                        Get.toNamed(Routes.UPDATE_DATA_GURU,
+                            arguments: dataGuru);
+                      },
+                      text: "Upate Data Guru",
+                    ),
                   ],
                 );
               } else {

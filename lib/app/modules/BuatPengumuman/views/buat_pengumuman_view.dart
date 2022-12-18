@@ -43,6 +43,8 @@ class BuatPengumumanView extends GetView<BuatPengumumanController> {
             headingText: "Judul",
             hintText: "Judul pengumuman",
             obsecureText: false,
+                        readOnly: false,
+
             suffixIcon: const SizedBox(),
             textInputType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
@@ -53,6 +55,8 @@ class BuatPengumumanView extends GetView<BuatPengumumanController> {
             headingText: "Isi",
             hintText: "Isi Pengumuman",
             obsecureText: false,
+                        readOnly: false,
+
             suffixIcon: const SizedBox(),
             textInputType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,

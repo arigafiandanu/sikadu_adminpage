@@ -37,7 +37,7 @@ class ChatView extends GetView<ChatController> {
                 backgroundColor: Colors.grey,
                 child: StreamBuilder<DocumentSnapshot<Object?>>(
                   stream: controller.streamFriendData(
-                      (Get.arguments as Map<String, dynamic>)["friendEmail"]),
+                      (Get.arguments as Map<String, dynamic>)["friendEmail"] ?? ""),
                   builder: (context, snapFriendUser) {
                     if (snapFriendUser.connectionState ==
                         ConnectionState.active) {
@@ -233,8 +233,8 @@ class ChatView extends GetView<ChatController> {
                         controller.chatC.text,
                       );
                     },
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
+                    child: const Padding(
+                      padding:  EdgeInsets.all(16.0),
                       child: Icon(
                         Icons.send_rounded,
                         color: Colors.white,

@@ -5,6 +5,7 @@ class CustomFormFieldTambahUser extends StatelessWidget {
   final String headingText;
   final String hintText;
   final bool obsecureText;
+  final bool readOnly;
   final Widget suffixIcon;
   final TextInputType textInputType;
   final TextInputAction textInputAction;
@@ -20,6 +21,7 @@ class CustomFormFieldTambahUser extends StatelessWidget {
       required this.textInputType,
       required this.textInputAction,
       required this.controller,
+      required this.readOnly,
       required this.maxLines})
       : super(key: key);
 
@@ -53,6 +55,7 @@ class CustomFormFieldTambahUser extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: TextField(
+              readOnly: readOnly,
               maxLines: maxLines,
               controller: controller,
               textInputAction: textInputAction,

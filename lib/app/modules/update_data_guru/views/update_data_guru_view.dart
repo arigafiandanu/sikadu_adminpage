@@ -4,15 +4,24 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:sikadu_admin/app/widget/buttonW.dart';
-import 'package:sikadu_admin/app/widget/textfieldTambahUser.dart';
 
+import '../../../widget/buttonW.dart';
 import '../../../widget/teksFieldButtonW.dart';
-import '../controllers/tambah_guru_controller.dart';
+import '../../../widget/textfieldTambahUser.dart';
+import '../controllers/update_data_guru_controller.dart';
 
-class TambahGuruView extends GetView<TambahGuruController> {
+class UpdateDataGuruView extends GetView<UpdateDataGuruController> {
+  var dataGuru = Get.arguments;
+  UpdateDataGuruView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    controller.namaC.text = dataGuru?['nama'];
+    controller.nipC.text = dataGuru?['nip'];
+    controller.noTelpC.text = dataGuru?['noTelp'];
+    controller.emailC.text = dataGuru?['email'];
+    controller.kelasC.value.text = dataGuru?['mengajarKelas'];
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -26,13 +35,12 @@ class TambahGuruView extends GetView<TambahGuruController> {
             color: Colors.black,
           ),
         ),
-        title: const Text(
-          'Tambah Data Guru',
-          style: TextStyle(
+        title: Text(
+          'Update Data Guru ${dataGuru['nama']}',
+          style: const TextStyle(
             color: Colors.black,
           ),
         ),
-        centerTitle: true,
       ),
       body: ListView(
         children: [
@@ -44,42 +52,62 @@ class TambahGuruView extends GetView<TambahGuruController> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                GetBuilder<TambahGuruController>(
+                GetBuilder<UpdateDataGuruController>(
                   builder: (c) {
-                    if (c.imageP != null) {
+                    if (c.image != null) {
                       return ClipOval(
-                        child: Container(
-                          height: 100,
-                          width: 100,
+                        child: SizedBox(
+                          height: 180,
+                          width: 180,
                           child: Image.file(
-                            File(c.imageP!.path),
+                            File(c.image!.path),
                             fit: BoxFit.cover,
                           ),
                         ),
                       );
                     } else {
-                      return GestureDetector(
-                        onTap: () {
-                          controller.pickImage();
-                        },
-                        child: Container(
-                          width: Get.width * 0.4,
-                          height: Get.height * 0.15,
-                          alignment: Alignment.center,
-                          child: Lottie.asset(
-                            "assets/lottie/avatar.json",
-                            alignment: Alignment.center,
+                      if (dataGuru?['foto'] == "foto kosong") {
+                        return ClipOval(
+                          child: SizedBox(
+                            height: 180,
+                            width: 180,
+                            child: Lottie.asset(
+                              "assets/lottie/avatar.json",
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                      );
+                        );
+                      } else {
+                        return ClipOval(
+                          child: SizedBox(
+                            height: 180,
+                            width: 180,
+                            child: Image.network(
+                              dataGuru?['foto'],
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      }
                     }
                   },
                 ),
-                TextButton(
-                  onPressed: () {
-                    controller.pickImage();
-                  },
-                  child: const Text("Ambil Foto Guru"),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        controller.pickImage();
+                      },
+                      child: const Text("Ambil Foto"),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        controller.hapusImage(dataGuru?['email']);
+                      },
+                      child: const Text("Hapus"),
+                    )
+                  ],
                 )
               ],
             ),
@@ -88,7 +116,7 @@ class TambahGuruView extends GetView<TambahGuruController> {
             headingText: "Email",
             hintText: "Email",
             obsecureText: false,
-            readOnly: false,
+            readOnly: true,
             suffixIcon: const SizedBox(),
             textInputType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
@@ -120,8 +148,8 @@ class TambahGuruView extends GetView<TambahGuruController> {
           Obx(
             () => TextFormButtonW(
               title: "Wali Kelas",
-              hint: controller.kategoriKelas.value,
-              controller: null,
+              hint: controller.kelasC.value.text,
+              controller: controller.kelasC.value,
               widget: DropdownButton(
                 icon: Icon(
                   Icons.keyboard_arrow_down_rounded,
@@ -138,7 +166,7 @@ class TambahGuruView extends GetView<TambahGuruController> {
                   );
                 }).toList(),
                 onChanged: (String? kategori) {
-                  controller.kategoriKelas.value = kategori!;
+                  controller.kelasC.value.text = kategori!;
                 },
               ),
             ),
@@ -157,11 +185,16 @@ class TambahGuruView extends GetView<TambahGuruController> {
           const SizedBox(
             height: 20,
           ),
-          ButtonW(
-            onTap: () {
-              controller.tambahGuru();
-            },
-            text: "Tambah Data Guru",
+          Obx(
+            () => ButtonW(
+                onTap: () async {
+                  if (controller.isLoading.isFalse) {
+                    await controller.updateGuru(dataGuru!['email']);
+                  }
+                },
+                text: controller.isLoading.isFalse
+                    ? "Update data siswa"
+                    : "loading"),
           ),
         ],
       ),

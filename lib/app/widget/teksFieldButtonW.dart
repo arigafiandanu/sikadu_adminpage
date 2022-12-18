@@ -55,6 +55,7 @@ class TextFormButtonW extends StatelessWidget {
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: hint,
+                    
                     hintStyle: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,

@@ -42,12 +42,18 @@ import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/lupaPass/bindings/lupa_pass_binding.dart';
 import '../modules/lupaPass/views/lupa_pass_view.dart';
+import '../modules/mata_pelajaran_perkelas/bindings/mata_pelajaran_perkelas_binding.dart';
+import '../modules/mata_pelajaran_perkelas/views/mata_pelajaran_perkelas_view.dart';
 import '../modules/profil/bindings/profil_binding.dart';
 import '../modules/profil/views/profil_view.dart';
 import '../modules/tambahSiswa/bindings/tambah_siswa_binding.dart';
 import '../modules/tambahSiswa/views/tambah_siswa_view.dart';
 import '../modules/updateProfil/bindings/update_profil_binding.dart';
 import '../modules/updateProfil/views/update_profil_view.dart';
+import '../modules/update_data_guru/bindings/update_data_guru_binding.dart';
+import '../modules/update_data_guru/views/update_data_guru_view.dart';
+import '../modules/update_data_siswa/bindings/update_data_siswa_binding.dart';
+import '../modules/update_data_siswa/views/update_data_siswa_view.dart';
 
 part 'app_routes.dart';
 
@@ -171,7 +177,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.UPDATE_PROFIL,
-      page: () => const UpdateProfilView(),
+      page: () => UpdateProfilView(),
       binding: UpdateProfilBinding(),
     ),
     GetPage(
@@ -183,6 +189,21 @@ class AppPages {
       name: _Paths.DETAIL_SISWA,
       page: () => const DetailSiswaView(),
       binding: DetailSiswaBinding(),
+    ),
+    GetPage(
+      name: _Paths.UPDATE_DATA_SISWA,
+      page: () => UpdateDataSiswaView(),
+      binding: UpdateDataSiswaBinding(),
+    ),
+    GetPage(
+      name: _Paths.UPDATE_DATA_GURU,
+      page: () => UpdateDataGuruView(),
+      binding: UpdateDataGuruBinding(),
+    ),
+    GetPage(
+      name: _Paths.MATA_PELAJARAN_PERKELAS,
+      page: () => const MataPelajaranPerkelasView(),
+      binding: MataPelajaranPerkelasBinding(),
     ),
   ];
 }
