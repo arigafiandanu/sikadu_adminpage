@@ -85,7 +85,7 @@ class ChatView extends GetView<ChatController> {
                 children: [
                   Text(
                     dataFriend["nama"],
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
                       color: Colors.white,

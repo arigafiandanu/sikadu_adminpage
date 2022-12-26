@@ -59,6 +59,7 @@ class BuatPengumumanController extends GetxController {
           "Berhasil",
           "Pengumuman berhasil dibuat",
           snackPosition: SnackPosition.TOP,
+          duration: const Duration(seconds: 5),
           borderRadius: 10,
           snackStyle: SnackStyle.FLOATING,
           icon: const Icon(
@@ -84,6 +85,7 @@ class BuatPengumumanController extends GetxController {
         "Gagal Menambah kan Pengumuman",
         "Pastikan semua terisi",
         snackPosition: SnackPosition.BOTTOM,
+        duration: const Duration(seconds: 5),
         borderRadius: 10,
         snackStyle: SnackStyle.FLOATING,
         icon: const Icon(

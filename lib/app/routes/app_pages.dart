@@ -48,6 +48,8 @@ import '../modules/profil/bindings/profil_binding.dart';
 import '../modules/profil/views/profil_view.dart';
 import '../modules/tambahSiswa/bindings/tambah_siswa_binding.dart';
 import '../modules/tambahSiswa/views/tambah_siswa_view.dart';
+import '../modules/tambah_pelajaran/bindings/tambah_pelajaran_binding.dart';
+import '../modules/tambah_pelajaran/views/tambah_pelajaran_view.dart';
 import '../modules/updateProfil/bindings/update_profil_binding.dart';
 import '../modules/updateProfil/views/update_profil_view.dart';
 import '../modules/update_data_guru/bindings/update_data_guru_binding.dart';
@@ -202,8 +204,13 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.MATA_PELAJARAN_PERKELAS,
-      page: () => const MataPelajaranPerkelasView(),
+      page: () => MataPelajaranPerkelasView(),
       binding: MataPelajaranPerkelasBinding(),
+    ),
+    GetPage(
+      name: _Paths.TAMBAH_PELAJARAN,
+      page: () => TambahPelajaranView(),
+      binding: TambahPelajaranBinding(),
     ),
   ];
 }
