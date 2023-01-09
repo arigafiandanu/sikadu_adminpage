@@ -40,7 +40,7 @@ class DaftarPelajaranView extends GetView<DaftarPelajaranController> {
             child: ListTile(
               onTap: () {
                 Get.toNamed(Routes.MATA_PELAJARAN_PERKELAS,
-                    arguments: {"kelas": "kelas 1"});
+                    arguments: {"kelas": "Kelas 1"});
               },
               title: const Text("Pelajaran Kelas 1"),
               trailing: const Icon(Icons.arrow_right),
@@ -56,7 +56,7 @@ class DaftarPelajaranView extends GetView<DaftarPelajaranController> {
             child: ListTile(
               onTap: () {
                 Get.toNamed(Routes.MATA_PELAJARAN_PERKELAS,
-                    arguments: {"kelas": "kelas 2"});
+                    arguments: {"kelas": "Kelas 2"});
               },
               title: const Text("Pelajaran Kelas 2"),
               trailing: const Icon(Icons.arrow_right),
@@ -72,7 +72,7 @@ class DaftarPelajaranView extends GetView<DaftarPelajaranController> {
             child: ListTile(
               onTap: () {
                 Get.toNamed(Routes.MATA_PELAJARAN_PERKELAS,
-                    arguments: {"kelas": "kelas 3"});
+                    arguments: {"kelas": "Kelas 3"});
               },
               title: const Text("Pelajaran Kelas 3"),
               trailing: const Icon(Icons.arrow_right),
@@ -88,7 +88,7 @@ class DaftarPelajaranView extends GetView<DaftarPelajaranController> {
             child: ListTile(
               onTap: () {
                 Get.toNamed(Routes.MATA_PELAJARAN_PERKELAS,
-                    arguments: {"kelas": "kelas 4"});
+                    arguments: {"kelas": "Kelas 4"});
               },
               title: const Text("Pelajaran Kelas 4"),
               trailing: const Icon(Icons.arrow_right),
@@ -104,7 +104,7 @@ class DaftarPelajaranView extends GetView<DaftarPelajaranController> {
             child: ListTile(
               onTap: () {
                 Get.toNamed(Routes.MATA_PELAJARAN_PERKELAS,
-                    arguments: {"kelas": "kelas 5"});
+                    arguments: {"kelas": "Kelas 5"});
               },
               title: const Text("Pelajaran Kelas 5"),
               trailing: const Icon(Icons.arrow_right),
@@ -120,7 +120,7 @@ class DaftarPelajaranView extends GetView<DaftarPelajaranController> {
             child: ListTile(
               onTap: () {
                 Get.toNamed(Routes.MATA_PELAJARAN_PERKELAS,
-                    arguments: {"kelas": "kelas 6"});
+                    arguments: {"kelas": "Kelas 6"});
               },
               title: const Text("Pelajaran Kelas 6"),
               trailing: const Icon(Icons.arrow_right),

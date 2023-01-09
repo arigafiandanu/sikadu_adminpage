@@ -53,7 +53,6 @@ class TambahPelajaranView extends GetView<TambahPelajaranController> {
           ButtonW(
             onTap: () {
               controller.tambahPelajaran(kelas);
-              print("click");
             },
             text: "Tambah",
           ),
