@@ -102,6 +102,7 @@ class TambahSiswaController extends GetxController {
             "role": "orangTua",
             "namaOrtu": namaOrtuC.text,
             "kelas": kategoriKelas.value,
+            "nilai": {}
           });
 
           Get.back();
