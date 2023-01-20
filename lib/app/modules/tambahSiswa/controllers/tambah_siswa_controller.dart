@@ -105,6 +105,8 @@ class TambahSiswaController extends GetxController {
             "nilai": {}
           });
 
+          await userCredential.user?.sendEmailVerification();
+          
           Get.back();
           Get.snackbar(
             "Berhasil",
