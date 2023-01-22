@@ -7,6 +7,7 @@ import 'package:lottie/lottie.dart';
 import 'package:sikadu_admin/app/widget/teksFieldButtonW.dart';
 
 import '../../../widget/buttonW.dart';
+import '../../../widget/textFieldIsiPengumuman.dart';
 import '../../../widget/textfieldTambahUser.dart';
 import '../controllers/buat_pengumuman_controller.dart';
 
@@ -43,25 +44,24 @@ class BuatPengumumanView extends GetView<BuatPengumumanController> {
             headingText: "Judul",
             hintText: "Judul pengumuman",
             obsecureText: false,
-                        readOnly: false,
-
+            readOnly: false,
             suffixIcon: const SizedBox(),
             textInputType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             controller: controller.judulC,
             maxLines: 1,
           ),
-          CustomFormFieldTambahUser(
-            headingText: "Isi",
-            hintText: "Isi Pengumuman",
+          CustomFormFieldIsiPengumuman(
+            headingText: "Isi Pengumuman",
+            hintText: "Masukkan Pengumuman",
             obsecureText: false,
-                        readOnly: false,
-
-            suffixIcon: const SizedBox(),
-            textInputType: TextInputType.emailAddress,
+            suffixIcon: SizedBox(),
+            textInputType: TextInputType.multiline,
             textInputAction: TextInputAction.next,
             controller: controller.isiC,
-            maxLines: 1,
+            maxLines: 30,
+            readOnly: false,
+            hint: "Masukan isi Pengumuman",
           ),
           Obx(
             () => TextFormButtonW(
@@ -69,7 +69,7 @@ class BuatPengumumanView extends GetView<BuatPengumumanController> {
               hint: controller.kategoriP.value,
               controller: null,
               widget: DropdownButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.keyboard_arrow_down_rounded,
                 ),
                 iconSize: 35,
@@ -85,6 +85,32 @@ class BuatPengumumanView extends GetView<BuatPengumumanController> {
                 }).toList(),
                 onChanged: (String? kategori) {
                   controller.kategoriP.value = kategori!;
+                },
+              ),
+            ),
+          ),
+           Obx(
+            () => TextFormButtonW(
+              title: "Kategori",
+              hint: controller.kategoriPenerima.value,
+              controller: null,
+              widget: DropdownButton(
+                icon: const Icon(
+                  Icons.keyboard_arrow_down_rounded,
+                ),
+                iconSize: 35,
+                elevation: 4,
+                underline: Container(
+                  height: 0,
+                ),
+                items: controller.dataPenerimaPengumuman.map((e) {
+                  return DropdownMenuItem(
+                    value: e.toString(),
+                    child: Text(e.toString()),
+                  );
+                }).toList(),
+                onChanged: (String? kategori) {
+                  controller.kategoriPenerima.value = kategori!;
                 },
               ),
             ),

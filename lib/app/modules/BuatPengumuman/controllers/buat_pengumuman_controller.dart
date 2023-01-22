@@ -13,7 +13,19 @@ class BuatPengumumanController extends GetxController {
   TextEditingController isiC = TextEditingController();
 
   var kategoriP = "Umum".obs;
+  var kategoriPenerima = "Semua".obs;
+
   List dataPengumuman = ["Umum", "Pembayaran", "Libur", "Akademik"];
+  List dataPenerimaPengumuman = [
+    "Kelas 1",
+    "Kelas 2",
+    "Kelas 3",
+    "Kelas 4",
+    "Kelas 5",
+    "Kelas 6",
+    "Semua"
+  ];
+
   final ImagePicker picker = ImagePicker();
   List<XFile> imageList = [];
   List<String> downloadUrl = [];
@@ -46,6 +58,7 @@ class BuatPengumumanController extends GetxController {
             "isi": isiC.text,
             "pembuat": namaUser,
             "kategori": kategoriP.value,
+            "kategoriPenerima":kategoriPenerima.value,
             "fotoPengumuman": downloadUrl,
             "tanggalBuat": DateTime.now().toIso8601String(),
           },

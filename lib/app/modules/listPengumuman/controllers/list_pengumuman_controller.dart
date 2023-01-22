@@ -10,4 +10,16 @@ class ListPengumumanController extends GetxController {
     Query<Map<String, dynamic>> pengumuman = firestore.collection("pengumuman");
     return pengumuman.snapshots();
   }
+
+  void deteteDocument(String id) async {
+    try {
+      await firestore.collection("pengumuman").doc(id).delete();
+      Get.back();
+      Get.snackbar("Berhasil", "Penguman berhasil dihapus");
+    } catch (e) {
+      Get.back();
+      Get.snackbar(
+          "Gagal menghapus pengumuman", "Silahkan coba beberapa saat lagi");
+    }
+  }
 }

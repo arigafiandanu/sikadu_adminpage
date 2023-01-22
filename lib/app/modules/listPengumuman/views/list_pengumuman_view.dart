@@ -59,6 +59,20 @@ class ListPengumumanView extends GetView<ListPengumumanController> {
                           arguments: isiData,
                         );
                       },
+                      onLongPress: () {
+                        Get.defaultDialog(
+                          title: "Hapus Pengumuman ini ?",
+                          middleText: "Pengumuman yang sudah dihapus tidak bisa dikembalikan",
+                          textCancel: "Batal",
+                          textConfirm: "Hapus",
+                          onCancel: () {
+                            Get.back();
+                          },
+                          onConfirm: () {
+                            controller.deteteDocument(isiData['id']);
+                          }
+                        );
+                      },
                       borderRadius: BorderRadius.circular(10),
                       focusColor: Colors.green[100],
                       splashColor: Colors.green[150],
@@ -68,7 +82,6 @@ class ListPengumumanView extends GetView<ListPengumumanController> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(color: Colors.grey.shade100),
-                          color: Colors.blue[50],
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -77,7 +90,7 @@ class ListPengumumanView extends GetView<ListPengumumanController> {
                             Container(
                               margin: const EdgeInsets.only(left: 10, top: 10),
                               alignment: Alignment.center,
-                              width: Get.width / 8,
+                              width: Get.width / 7.5,
                               decoration: BoxDecoration(
                                 color: Colors.blue[100],
                                 borderRadius: BorderRadius.circular(5),
@@ -97,7 +110,7 @@ class ListPengumumanView extends GetView<ListPengumumanController> {
                               height: Get.height * 0.075,
                               child: Text(
                                 "${isiData['judul']}".toUpperCase(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w800,
                                 ),
@@ -107,7 +120,8 @@ class ListPengumumanView extends GetView<ListPengumumanController> {
                               padding: const EdgeInsets.only(left: 10, top: 5),
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                isiData['tanggalBuat'],
+                                (DateFormat.yMMMMd().format(
+                                    DateTime.parse(isiData['tanggalBuat']))),
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w300,
