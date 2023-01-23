@@ -62,7 +62,9 @@ class LupaPassView extends GetView<LupaPassController> {
             height: Get.height * 0.03,
           ),
           ButtonW(
-            onTap: () {},
+            onTap: () {
+              authC.lupaPass(authC.emailC.text);
+            },
             text: "Lupa Passwod",
           )
         ],

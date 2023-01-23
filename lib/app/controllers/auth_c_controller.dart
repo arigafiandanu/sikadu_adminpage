@@ -178,7 +178,7 @@ class AuthCController extends GetxController {
             "nama": nama,
             "email": email,
             "alamat": "alamat kosong",
-            "noTelp": "noTelp kosong",
+            "notelp": "noTelp kosong",
             "creationTime": _currUserMeta?.creationTime!.toIso8601String(),
           });
 

@@ -16,7 +16,7 @@ class UpdateProfilView extends GetView<UpdateProfilController> {
   Widget build(BuildContext context) {
     controller.emailC.text = user?['email'];
     controller.namaC.text = user?['nama'];
-    controller.notelpC.text = user?['noTelp'];
+    controller.notelpC.text = user?['notelp'];
     controller.alamatC.text = user?['alamat'];
 
     return Scaffold(
