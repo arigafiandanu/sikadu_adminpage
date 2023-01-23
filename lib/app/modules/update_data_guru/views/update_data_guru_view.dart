@@ -193,7 +193,7 @@ class UpdateDataGuruView extends GetView<UpdateDataGuruController> {
                   }
                 },
                 text: controller.isLoading.isFalse
-                    ? "Update data siswa"
+                    ? "Update data Guru"
                     : "loading"),
           ),
         ],
